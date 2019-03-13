@@ -1,0 +1,7 @@
+{
+  "name": "myU_1.0",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
