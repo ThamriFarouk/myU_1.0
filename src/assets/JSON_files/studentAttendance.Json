@@ -1,0 +1,31 @@
+{
+    "seances":[
+        {
+            "date":"17/09/2018",
+            "classe":"LA_ANEST_2_1",
+            "professor":"MOHAMED SALEH MANAI",
+            "course":"Stage 3 et pratiques des soins en Réanimation1",
+            "startTime":"07:00",
+            "endTime":"12:00"
+        },
+        {
+            "date":"17/09/2018",
+            "classe":"LA_ANEST_2_1",
+            "professor":"FOULEN BEN FOULEN",
+            "course":"Pathologie Médicale 1",
+            "startTime":"07:00",
+            "endTime":"12:00"
+        }
+    ],
+    "nbAbsences":4,
+    "nbAbsencesByCourse":[
+        {
+            "nbAbsence":3,
+            "course":"Stage 3 et pratiques des soins en Réanimation1"
+        },
+        {
+            "nbAbsence":1,
+            "course":"Pathologie Médicale 1"
+        }
+    ]
+}

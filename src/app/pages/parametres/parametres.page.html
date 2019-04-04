@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Parametres
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+
+    <ion-button expand="block" color="medium" (click)="changeTheme('autumn')">Autumn</ion-button>
+    <ion-button expand="block" color="medium" (click)="changeTheme('night')">Dark</ion-button>
+    <ion-button expand="block" color="medium" (click)="changeTheme('neon')">Neon</ion-button>
+    <ion-button expand="block" color="medium" (click)="changeTheme('greeny')">Greeny</ion-button>
+    <ion-button expand="block" color="medium" (click)="changeTheme('ruby')">Ruby</ion-button>
+    <ion-button expand="block" color="medium" (click)="changeTheme('')">Default</ion-button>
+
+    <ion-button color="primary">Primary</ion-button>
+    <ion-button color="secondary">Secondary</ion-button>
+    <ion-button color="tertiary">Tertiary</ion-button>
+    <ion-button color="medium">Medium</ion-button>
+    <ion-button color="dark">Dark</ion-button>
+
+</ion-content>

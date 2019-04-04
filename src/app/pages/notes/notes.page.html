@@ -1,0 +1,82 @@
+
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Notes
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+    <ion-tab-bar>
+      <ion-tab-button>
+          <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button>2018/2019</ion-tab-button>
+      <ion-tab-button >
+          <ion-icon  name="arrow-round-forward"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+    <ion-segment>
+      <ion-segment-button checked>
+        <ion-label>Semestre 1</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label>Semestre 2</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  
+
+<ion-content>
+
+  <p padding>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+
+  <ion-list *ngFor="let mark of tabEvaluations[0]; let i = index">
+  <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+            <ion-row>
+                <ion-col size="auto">
+                  <ion-title color="primary">
+                      {{mark.evalName}} {{mark.course}}
+                  </ion-title>
+                 </ion-col>
+                <ion-col size="auto" style="font-size: 30px; text-align: right;">
+                  <ion-title color="tertiary" style="float: right">
+                      {{mark.note}}
+                  </ion-title>
+                </ion-col>
+            </ion-row>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content *ngIf="!collapseCard">
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                    <ion-col>Coefficient: </ion-col><ion-col color="primary" style="font-weight: bold; text-align: right">{{mark.courseCoef}}</ion-col>
+                  </ion-item>
+                  <ion-item>
+                    <ion-col>Unité: </ion-col><ion-col color="primary" style="font-weight: bold; text-align: right">{{mark.unit}}</ion-col>
+                  </ion-item>
+                  <ion-item>
+                    <ion-col>Coefficient de l'unité: </ion-col><ion-col color="primary" style="font-weight: bold; text-align: right">{{mark.unitCoef}}</ion-col>
+                  </ion-item>
+                  <ion-item *ngIf="mark.absent == 'Y'">
+                    <ion-col>Absent: </ion-col><ion-col color="primary" style="font-weight: bold; text-align: right">Oui</ion-col>
+                  </ion-item>
+                  <ion-item *ngIf="mark.absent == 'N'">
+                    <ion-col>Absent: </ion-col><ion-col color="primary" style="font-weight: bold; text-align: right">Non</ion-col>
+                  </ion-item>
+              </ion-col>
+            </ion-row>
+      </ion-card-content>
+  </ion-card>
+
+</ion-list>
+
+</ion-content>
+

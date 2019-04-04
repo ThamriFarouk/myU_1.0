@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>Absences</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p padding>
+      Quisque sed semper purus. Pellentesque faucibus ut sem quis maximus. Etiam sit amet hendrerit lectus. Curabitur bibendum justo ac neque efficitur aliquet vitae vel nisl. Integer eu suscipit ligula. Quisque vitae accumsan purus. Nullam scelerisque gravida ultricies.
+  </p>
+  <hr width="1" size="500">
+
+  <ion-list *ngFor="let seance of tabSeances[0]; let i = index">
+        <ion-card color="primary" padding >
+          <ion-row>
+            <ion-col>
+                <ion-card-title>
+                    {{seance.course}}
+                </ion-card-title>
+                <ion-card-subtitle>
+                    {{seance.professor}}
+                </ion-card-subtitle>
+                <ion-card-content>
+                    <div>
+                        <ion-icon name="calendar"></ion-icon>
+                        {{seance.date}}
+                      </div>
+                    <div>
+                      <ion-icon name="time"></ion-icon>
+                      {{seance.startTime}} > {{seance.endTime}}
+                    </div>
+                </ion-card-content>
+            </ion-col>
+            <ion-col  size="auto" style="font-size: 70px; align-content: center" *ngIf="seance.course == tabAbsByCourse[0][i].course">
+                  {{tabAbsByCourse[0][i].nbAbsence}}
+                  <p style="font-size: 10px">Absences</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+  </ion-list>
+  
+</ion-content>
+

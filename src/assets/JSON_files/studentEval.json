@@ -1,0 +1,22 @@
+[
+    {
+        "note": "15,5",
+        "unit": "Pathologies 1",
+        "evalName": "DS1",
+        "unitCoef": 2,
+        "courseCoef": 1,
+        "course": "Pathologie Médicale 1",
+        "absent": "Y",
+        "redoublant": "N"
+    },
+    {
+        "note": "13,75",
+        "unit": "Anatomie 1",
+        "evalName": "DS1",
+        "unitCoef": 4,
+        "courseCoef": 2,
+        "course": "Anatomie Humaine 1",
+        "absent": "N",
+        "redoublant": "N"
+    }
+]

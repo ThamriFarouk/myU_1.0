@@ -1,0 +1,32 @@
+[
+    {
+        "average": "10,58",
+        "classe": "LA_ANEST_1_1",
+        "decision": "Ajourné(e)",
+        "avgBeforeInternship": "",
+        "session": "Session principale",
+        "schoolYear": "2017/2018",
+        "type": "Annuel",
+        "mention": ""
+    },
+    {
+        "average": "10,77",
+        "classe": "LA_ANEST_1_1",
+        "decision": "Admis(e)",
+        "avgBeforeInternship": "10,77",
+        "session": "Session contrôle",
+        "schoolYear": "2017/2018",
+        "type": "Annuel",
+        "mention": "Passable"
+    },
+    {
+        "average": "0,00",
+        "classe": "LA_ANEST_2_1",
+        "decision": "Ajourné(e)",
+        "avgBeforeInternship": "0,00",
+        "session": "Session principale",
+        "schoolYear": "2018/2019",
+        "type": "Annuel",
+        "mention": ""
+    }
+]
