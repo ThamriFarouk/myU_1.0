@@ -5,23 +5,35 @@
     </ion-buttons>
     <ion-title>Enseignants</ion-title>
   </ion-toolbar>
+
+  <ion-tab-bar>
+    <ion-label>Organiser par:</ion-label>
+    <ion-select placeholder="Organize by">
+      <ion-select-option selected value="Teachers">Teachers</ion-select-option>
+      <ion-select-option color="primary" value="Course">Course</ion-select-option>
+    </ion-select>
+  </ion-tab-bar>
+
 </ion-header>
 
 <ion-content padding>
+  
   <p padding>
-    Voici la liste de vos enseignants !!!
+      Quisque sed semper purus. Pellentesque faucibus ut sem quis maximus. Etiam sit amet hendrerit lectus. Curabitur bibendum justo ac neque efficitur aliquet vitae vel nisl. Integer eu suscipit ligula. Quisque vitae accumsan purus. Nullam scelerisque gravida ultricies.
   </p>
-<ion-button>
-    <ion-label>Orginize by</ion-label>
-    <ion-select placeholder="Select One">
-      <ion-select-option value="Teachers">Teachers</ion-select-option>
-      <ion-select-option value="Course">Course</ion-select-option>
-    </ion-select>
-  </ion-button>
-  <label>enseignant:</label>
-  <ion-list class="hi" *ngFor="let teacher of tabTeachers">
-    <ion-item>
-      {{ teacher.fullName }}
+  <ion-title color="primary" padding style="font-size: 35px">Enseignants:</ion-title>
+  <ion-list *ngFor="let teacher of tabTeachers">
+    <div style="padding-left: 32px">
+      <ion-label style="font-size: 25px; text-decoration: underline">
+        {{teacher.fullName}}
+      </ion-label>
+      <p color="medium" style="margin-bottom: 12px">Matiere: {{teacher.course}}</p>
+      <ion-label *ngIf="teacher.evaluation != ''">Evaluation: {{teacher.evaluation}}/5</ion-label> <br>
+      
+    </div>
+    <ion-item style="padding-left: 0px">
+      <ion-button slot="end" size="small" color="success" style="margin-left: 4px">Evaluer</ion-button>
+      <ion-button slot="end" size="small" color="warning" style="margin-left: 4px">Consulter</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

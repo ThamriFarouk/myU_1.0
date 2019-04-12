@@ -3,6 +3,13 @@
         "classId": 796,
         "professors": [
             {
+                "courseName": "Mathematique appliquées (Cours)",
+                "professorClassId": 28224,
+                "professorFullName": "ABD ERRAOUF MAHDI",
+                "professorId": 19261,
+                "evaluated": ""
+            },
+            {
                 "courseName": "Pathologie médicale 2 (Cours)",
                 "professorClassId": 28224,
                 "professorFullName": "ABD ERRAOUF MAHDI",
