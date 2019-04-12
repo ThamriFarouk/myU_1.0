@@ -1,4 +1,4 @@
-import { Evaluation } from './Evaluation';
+import { Evaluation } from './evaluation';
 
 export class Course {
   constructor(
