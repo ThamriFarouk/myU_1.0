@@ -22,13 +22,14 @@ const routes: Routes = [
         loadChildren: '../parametres/parametres.module#ParametresPageModule'
       },
       {
-        path: 'listTeachers',
-        loadChildren: '../list-teachers/list-teachers.module#ListTeachersPageModule',
-        //component: ListTeachersPage
+        // path: 'listTeachers',
+        // loadChildren: '../list-teachers/list-teachers.module#ListTeachersPageModule',
+        //  component: ListTeachersPage
       },
       {
         path: 'teacherDetails/:id/:name',
-        loadChildren: '../list-teachers/teacher-details/teacher-details.module#TeacherDetailsPageModule'
+        loadChildren:
+          '../list-teachers/teacher-details/teacher-details.module#TeacherDetailsPageModule'
       },
       {
         path: 'absences',
@@ -37,17 +38,17 @@ const routes: Routes = [
       {
         path: 'notes',
         loadChildren: '../notes/notes.module#NotesPageModule'
-       },
-       {
+      },
+      {
         path: 'results',
         loadChildren: '../results/results.module#ResultsPageModule'
-       },
-       {
+      },
+      {
         path: 'internships',
         loadChildren: '../internships/internships.module#InternshipsPageModule'
-       },
+      }
     ]
-  },
+  }
   // {
   //   path: 'login',
   //   loadChildren: '../login/login.module#LoginPageModule'
@@ -65,6 +66,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MenuPage, ListTeachersPage]
+  declarations: [MenuPage]
 })
 export class MenuPageModule {}
