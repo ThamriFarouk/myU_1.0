@@ -8,8 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-avatar> </ion-avatar>
-
+<ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option value="f">Female</ion-select-option>
+      <ion-select-option value="m">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-list class="hi" *ngFor="let teacher of tabTeachers">
     <ion-item>
       {{ teacher.fullName }}
