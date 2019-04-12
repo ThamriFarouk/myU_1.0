@@ -22,11 +22,6 @@ const routes: Routes = [
         loadChildren: '../parametres/parametres.module#ParametresPageModule'
       },
       {
-        path: 'listTeachers',
-        loadChildren: '../list-teachers/list-teachers.module#ListTeachersPageModule',
-        //component: ListTeachersPage
-      },
-      {
         path: 'teacherDetails/:id/:name',
         loadChildren: '../list-teachers/teacher-details/teacher-details.module#TeacherDetailsPageModule'
       },
@@ -46,6 +41,11 @@ const routes: Routes = [
         path: 'internships',
         loadChildren: '../internships/internships.module#InternshipsPageModule'
        },
+       {
+         path: 'teachers',
+         loadChildren: '../teachers/teachers.module#TeachersPageModule'
+       },
+
     ]
   },
   // {
@@ -65,6 +65,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MenuPage, ListTeachersPage]
+  declarations: [MenuPage, ]
 })
 export class MenuPageModule {}

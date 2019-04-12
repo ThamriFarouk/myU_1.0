@@ -3,47 +3,85 @@ import { GetStudentResultsService } from 'src/app/services/get-student-results.s
 import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { from } from 'rxjs';
-
+import { StudentResults } from 'src/app/models/studentResults';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.page.html',
-  styleUrls: ['./results.page.scss'],
+  styleUrls: ['./results.page.scss']
 })
 export class ResultsPage implements OnInit {
+  public Res: any[] = [];
+  public tabResults: StudentResults[] = [];
 
-  public tabResults: any[] = [];
+  public collapseCard: boolean[] = [true, true];
 
   constructor(
     public studentRes: GetStudentResultsService,
     private loadingCtrl: LoadingController,
     private nativeHttp: HTTP
-    ) { }
+  ) {}
 
   async getstudentResult() {
-    let loading = await this.loadingCtrl.create();
+    const loading = await this.loadingCtrl.create();
     await loading.present();
-    this.studentRes.getStudentResult().pipe(finalize(() => loading.dismiss())).subscribe(Results => {
-      this.tabResults.push(Results);
-      this.tabResults[0] = this.tabResults[0].reverse();
-      console.log(this.tabResults);
-  });
-}
+    this.studentRes
+      .getStudentResult()
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.Res.push(response);
+        this.reorginizeResponse();
+        for (let i = 0; i < this.tabResults.length; i++) {
+          this.tabResults[i].test();
+          // console.log(this.tabResults[i].mention);
+        }
+        this.tabResults = this.tabResults.reverse();
+        // console.log(this.tabResults);
+      });
+  }
 
   async getstudentResults(id) {
-    let loading = await this.loadingCtrl.create();
+    const loading = await this.loadingCtrl.create();
     await loading.present();
-    this.studentRes.getStudentResults(id).pipe(finalize(() => loading.dismiss())
-    ).subscribe(Results => {
-      this.tabResults.push(Results);
-      console.log(this.tabResults);
-  });
+    this.studentRes
+      .getStudentResults(id)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.Res.push(response);
+        this.reorginizeResponse();
+        for (let i = 0; i < this.tabResults.length; i++) {
+          this.tabResults[i].test();
+          // console.log(this.tabResults[i].mention);
+        }
+        this.tabResults = this.tabResults.reverse();
+        // console.log(this.tabResults);
+      });
+  }
+
+  // puts json object response into organized arrays
+  reorginizeResponse() {
+    this.Res[0].forEach(element => {
+      this.tabResults.push(
+        new StudentResults(
+          element.average,
+          element.classe,
+          element.decision,
+          element.avgBeforeInternship,
+          element.session,
+          element.schoolYear,
+          element.type,
+          element.mention
+        )
+      );
+    });
+  }
+
+  collapse(i) {
+    this.collapseCard[i - 1] = !this.collapseCard[i - 1];
   }
 
   ngOnInit() {
     this.getstudentResult();
-    //this.getstudentResults(4590);
+    // this.getstudentResults(4590);
   }
-
 }

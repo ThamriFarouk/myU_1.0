@@ -42,6 +42,7 @@ const defaults = {
   primary: '#3880ff',
   secondary: '#0cd1e8',
   tertiary: '#7044ff',
+  prem_dark: '#005dff',
   success: '#10dc60',
   warning: '#ffce00',
   danger: '#f04141',
@@ -57,6 +58,7 @@ function CSSTextGenerator(colors) {
     primary,
     secondary,
     tertiary,
+    prem_dark,
     success,
     warning,
     danger,
@@ -100,6 +102,13 @@ function CSSTextGenerator(colors) {
     --ion-color-tertiary-shade: ${Color(tertiary).darken(shadeRatio)};
     --ion-color-tertiary-tint:  ${Color(tertiary).lighten(tintRatio)};
 
+    --ion-color-prem_dark:  ${prem_dark};
+    --ion-color-prem_dark-rgb: 112,68,255;
+    --ion-color-prem_dark-contrast: ${contrast(prem_dark)};
+    --ion-color-prem_dark-contrast-rgb: 255,255,255;
+    --ion-color-prem_dark-shade: ${Color(prem_dark).darken(shadeRatio)};
+    --ion-color-prem_dark-tint:  ${Color(prem_dark).lighten(tintRatio)};
+
     --ion-color-success: ${success};
     --ion-color-success-rgb: 16,220,96;
     --ion-color-success-contrast: ${contrast(success)};
@@ -134,7 +143,7 @@ function CSSTextGenerator(colors) {
     --ion-color-medium-contrast-rgb: 255,255,255;
     --ion-color-medium-shade: ${Color(medium).darken(shadeRatio)};
     --ion-color-medium-tint: ${Color(medium).lighten(tintRatio)};
-    
+
     --ion-color-light: ${light};
     --ion-color-light-rgb: 244,244,244;
     --ion-color-light-contrast: $${contrast(light)};

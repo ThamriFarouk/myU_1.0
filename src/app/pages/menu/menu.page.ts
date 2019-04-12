@@ -31,6 +31,11 @@ export class MenuPage implements OnInit {
       url: '/etudiant/absences',
       icon: 'alert'
     },
+    // {
+    //   title: 'Eliminations',
+    //   url: '/etudiant/eliminations',
+    //   icon: 'close-circle'
+    // },
     {
       title: 'Documents',
       url: '/Docs',
@@ -69,7 +74,7 @@ export class MenuPage implements OnInit {
     },
     {
       title: 'Enseignants',
-      url: '/etudiant/listTeachers',
+      url: '/etudiant/teachers',
       icon: 'man'
     },
     {
@@ -88,8 +93,7 @@ export class MenuPage implements OnInit {
     private router: Router,
     private authService: AuthentificationService,
     private loadingCtrl: LoadingController,
-  )
-  {
+  ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
     });
@@ -100,7 +104,7 @@ export class MenuPage implements OnInit {
     await loading.present();
     this.authService.logout();
     loading.dismiss();
-    }
+  }
 
   ngOnInit() {
   }

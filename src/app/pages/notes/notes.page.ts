@@ -3,60 +3,174 @@ import { GetStudentEvaluationService } from 'src/app/services/get-student-evalua
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-
-
+import { Unit } from 'src/app/models/Unit';
+import { Course } from 'src/app/models/Course';
+import { Evaluation } from 'src/app/models/Evaluation';
 
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.page.html',
-  styleUrls: ['./notes.page.scss'],
+  styleUrls: ['./notes.page.scss']
 })
 export class NotesPage implements OnInit {
-
   istoggled = false;
 
-  public tabEvaluations: any[] = [];
-  public collapseCard: boolean[] = [true, true];
+  public Res: any[] = [];
+  public tabUnits: Unit[] = [];
+  public tabCourses: Course[] = [];
+  public tabEvals: Evaluation[] = [];
+
+  public collapseCard: boolean[] = [true, true, true];
+  public collapseCardCourse: boolean[] = [true, true];
 
   constructor(
     private studentEval: GetStudentEvaluationService,
     private router: Router,
-    private loadingCtrl: LoadingController,
-    ) { }
+    private loadingCtrl: LoadingController
+  ) {}
 
-    collapse(i) {
-      if (this.collapseCard[i] = true) {
-        this.collapseCard[i] = false;
-      } else {
-        this.collapseCard[i] = true;
-      }
-    }
-
+  // API from local
   async getstudentEvaluation() {
-    let loading = await this.loadingCtrl.create();
+    const loading = await this.loadingCtrl.create();
     await loading.present();
-    this.studentEval.getStudentEvaluation().pipe(finalize(() => loading.dismiss())).subscribe(Evaluation => {
-      this.tabEvaluations.push(Evaluation);
-      this.tabEvaluations = this.tabEvaluations.slice().reverse();
-      console.log(this.tabEvaluations);
-  });
-}
+    this.studentEval
+      .getStudentEvaluation()
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.Res.push(response);
+        this.reorginizeResponse();
+        this.putEvalsInCourse();
+        this.putCoursesInUnit();
+        this.unicityFonction(this.tabUnits);
 
-  async getstudentEvaluations(id) {
-    let loading = await this.loadingCtrl.create();
-    await loading.present();
-    this.studentEval.getStudentEvaluations(id).pipe(finalize(() =>  loading.dismiss())).subscribe(Evaluation => {
-      this.tabEvaluations.push(Evaluation);
-      this.tabEvaluations = this.tabEvaluations.slice().reverse();
-      console.log(this.tabEvaluations);
-  });
+        for (let i = 0; i < this.tabUnits.length; i++) {
+          this.unicityFonction(this.tabUnits[i].Courses);
+          for (let j = 0; j < this.tabUnits[i].Courses.length; j++) {
+            this.unicityFonction(this.tabUnits[i].Courses[j].Evaluations);
+          }
+        }
+      });
   }
 
+  // API from server
+  async getstudentEvaluations(id) {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.studentEval
+      .getStudentEvaluations(id)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.Res.push(response);
+        this.reorginizeResponse();
+        this.putEvalsInCourse();
+        this.putCoursesInUnit();
+        this.unicityFonction(this.tabUnits);
 
-ngOnInit() {
-  this.getstudentEvaluation();
-  //this.getstudentEvaluations(4590);
+        for (let i = 0; i < this.tabUnits.length; i++) {
+          this.unicityFonction(this.tabUnits[i].Courses);
+          for (let j = 0; j < this.tabUnits[i].Courses.length; j++) {
+            this.unicityFonction(this.tabUnits[i].Courses[j].Evaluations);
+          }
+        }
+      });
+  }
 
-}
+  // puts json object response into organized arrays
+  reorginizeResponse() {
+    this.Res[0].forEach(element => {
+      this.tabUnits.push(new Unit(element.unit, element.unitCoef, []));
+      this.tabCourses.push(
+        new Course(element.course, element.courseCoef, element.unit, [])
+      );
+      this.tabEvals.push(
+        new Evaluation(element.evalName, element.course, element.note)
+      );
+    });
+  }
 
+  // puts in the array tabCourse all the course belonging to the same Course
+  putEvalsInCourse() {
+    for (let i = 0; i < this.tabEvals.length; i++) {
+      for (let j = 0; j < this.tabCourses.length; j++) {
+        if (this.tabEvals[i].courseName === this.tabCourses[j].name) {
+          this.tabCourses[j].Evaluations.push(this.tabEvals[i]);
+        }
+      }
+    }
+  }
+
+  // puts in the array tabUnits all the course belonging to the same unit
+  putCoursesInUnit() {
+    for (let i = 0; i < this.tabCourses.length; i++) {
+      for (let j = 0; j < this.tabUnits.length; j++) {
+        if (this.tabCourses[i].unitName === this.tabUnits[j].name) {
+          this.tabUnits[j].Courses.push(this.tabCourses[i]);
+        }
+      }
+    }
+  }
+
+  // deletes duplicated element in an array of units
+  unicityFonction(tab) {
+    let i = 0;
+    while (i < tab.length) {
+      // console.log('i =' + i);
+      // console.log(tab[i]);
+      let j = i + 1;
+      while (j < tab.length) {
+        // console.log('j =' + j);
+        if (tab[i].name === tab[j].name) {
+          // console.log(tab[j]);
+          tab.splice(j, 1);
+          // console.log('spliced' + '[' + i + ',' + j + ']');
+          // console.log(tab); // just for tests
+          j--;
+        }
+        j++;
+      }
+      i++;
+    }
+  }
+
+  // deletes duplicated element in an array of courses
+  unicityFonctionCourses(tab, attribute1, attribute2) {
+    let i = 0;
+    while (i < tab.length) {
+      // console.log('i =' + i);
+      // console.log(tab[i]);
+      let j = i + 1;
+      while (j < tab.length) {
+        // console.log('j =' + j);
+        // tslint:disable-next-line:no-eval
+        if (eval(tab[i].attribute1) === eval(tab[j].attribute2)) {
+          // console.log(tab[j]);
+          tab.splice(j, 1);
+          // console.log('spliced' + '[' + i + ',' + j + ']');
+          // console.log(tab); // just for tests
+          j--;
+        }
+        j++;
+      }
+      i++;
+    }
+  }
+
+  collapseUnit(i) {
+    this.collapseCard[i - 1] = !this.collapseCard[i - 1];
+  }
+
+  collapseCourse(j) {
+    this.collapseCardCourse[j - 1] = !this.collapseCardCourse[j - 1];
+  }
+
+  //  scrollTo(element:string) {
+  //    let yOffset = document.getElementById(element).offsetTop;
+  //    let content = document.getElementById('content');
+  //    content.scrollTo(0, yOffset);
+  //  }
+
+  ngOnInit() {
+    this.getstudentEvaluation();
+    // this.getstudentEvaluations(4590);
+  }
 }

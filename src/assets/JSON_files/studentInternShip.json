@@ -1,0 +1,87 @@
+[
+    {
+        "internshipType": "PFE",
+        "internshipNature": "Nursing",
+        "endDate": "28/02/2019",
+        "organisation": "Hopital militaire",
+        "students": [
+            {
+                "fullName": "OUESLATI ABIR",
+                "id": 3826
+            }
+        ],
+        "internshipTerritory": "Stage 2",
+        "published": "1",
+        "title": "Stage 2 Omar",
+        "professors": [
+            {
+                "fullName": "ARIDHI NAJLA  ",
+                "id": 19218
+            },
+            {
+                "fullName": "NADHIM  AISSANI",
+                "id": 19433
+            }
+        ],
+        "schoolYear": "2018/2019",
+        "meetings": [],
+        "internshipUnit": "Pédiatrie",
+        "id": 3,
+        "startDate": "01/02/2019",
+        "supervisors": [],
+        "status": "En attente d’approbation"
+    },
+    {
+        "internshipType": "Stage 1",
+        "internshipNature": "Nursing",
+        "endDate": "30/04/2019",
+        "organisation": "Hopital militaire",
+        "students": [],
+        "internshipTerritory": "Stage 1",
+        "published": "1",
+        "title": "Stage 1 Omar",
+        "professors": [
+            {
+                "fullName": "ABD ERRAOUF MAHDI  ",
+                "id": 19261
+            }
+        ],
+        "schoolYear": "2018/2019",
+        "meetings": [
+            {
+                "description": "",
+                "startTime": "13/02/2019 08:00",
+                "id": 2,
+                "place": "Bureau encadrant",
+                "endTime": "13/02/2019 09:00",
+                "status": "Effectuée"
+            },
+            {
+                "description": "",
+                "startTime": "12/02/2019 14:00",
+                "id": 4,
+                "place": "Bureau encadrantssss",
+                "endTime": "12/02/2019 15:00",
+                "status": "Planifiée"
+            },
+            {
+                "description": "",
+                "startTime": "13/02/2019 00:00",
+                "id": 6,
+                "place": "Bureau encadrant",
+                "endTime": "13/02/2019 04:00",
+                "status": "Planifiée"
+            }
+        ],
+        "internshipUnit": "Pédiatrie",
+        "id": 2,
+        "startDate": "01/02/2019",
+        "supervisors": [
+            {
+                "fullName": "Boulila Aissa",
+                "id": 1
+            }
+        ],
+        "status": "En attente d’approbation"
+    }
+]

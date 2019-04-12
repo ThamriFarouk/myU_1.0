@@ -9,11 +9,27 @@
             "endTime":"12:00"
         },
         {
-            "date":"17/09/2018",
+            "date":"20/09/2018",
             "classe":"LA_ANEST_2_1",
             "professor":"FOULEN BEN FOULEN",
             "course":"Pathologie Médicale 1",
-            "startTime":"07:00",
+            "startTime":"10:00",
+            "endTime":"12:00"
+        },
+        {
+            "date":"13/09/2018",
+            "classe":"LA_ANEST_2_1",
+            "professor":"MONCEF BEY",
+            "course":"Anatomie 1",
+            "startTime":"14:00",
+            "endTime":"15:30"
+        },
+        {
+            "date":"27/09/2018",
+            "classe":"LA_ANEST_2_1",
+            "professor":"FOULEN BEN FOULEN",
+            "course":"Pathologie Médicale 1",
+            "startTime":"10:00",
             "endTime":"12:00"
         }
     ],
@@ -24,8 +40,12 @@
             "course":"Stage 3 et pratiques des soins en Réanimation1"
         },
         {
-            "nbAbsence":1,
+            "nbAbsence":2,
             "course":"Pathologie Médicale 1"
+        },
+        {
+            "nbAbsence":3,
+            "course":"Anatomie 1"
         }
     ]
 }

@@ -5,41 +5,53 @@
         </ion-buttons>
     <ion-title>Absences</ion-title>
   </ion-toolbar>
+  <ion-segment>
+      <ion-segment-button id="segAbsences" (click)="swichToAbsences()" checked>
+        <ion-label>Absences</ion-label>
+      </ion-segment-button>
+      <ion-segment-button id="segEliminations" (click)="swichToEliminations()">
+        <ion-label>Eliminations</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 </ion-header>
 
-<ion-content padding>
+<ion-content *ngIf="eliminationclicked">
+  <app-eliminations></app-eliminations>
+</ion-content>
+
+<ion-content *ngIf="!eliminationclicked" padding>
 
   <p padding>
       Quisque sed semper purus. Pellentesque faucibus ut sem quis maximus. Etiam sit amet hendrerit lectus. Curabitur bibendum justo ac neque efficitur aliquet vitae vel nisl. Integer eu suscipit ligula. Quisque vitae accumsan purus. Nullam scelerisque gravida ultricies.
   </p>
   <hr width="1" size="500">
 
-  <ion-list *ngFor="let seance of tabSeances[0]; let i = index">
-        <ion-card color="primary" padding >
-          <ion-row>
-            <ion-col>
+  <ion-list *ngFor="let seance of Seances; let i = index">
+        <ion-card>
+          <ion-card-header color="warning" (click)="collapse(i)">
                 <ion-card-title>
                     {{seance.course}}
                 </ion-card-title>
-                <ion-card-subtitle>
-                    {{seance.professor}}
-                </ion-card-subtitle>
-                <ion-card-content>
-                    <div>
-                        <ion-icon name="calendar"></ion-icon>
-                        {{seance.date}}
-                      </div>
-                    <div>
-                      <ion-icon name="time"></ion-icon>
-                      {{seance.startTime}} > {{seance.endTime}}
-                    </div>
-                </ion-card-content>
-            </ion-col>
-            <ion-col  size="auto" style="font-size: 70px; align-content: center" *ngIf="seance.course == tabAbsByCourse[0][i].course">
-                  {{tabAbsByCourse[0][i].nbAbsence}}
-                  <p style="font-size: 10px">Absences</p>
-            </ion-col>
-          </ion-row>
+          </ion-card-header>
+          <ion-card-content padding *ngIf="!collapseCard[i-1]">
+            <br>
+              <ion-card-subtitle>
+                <ion-icon name="man"></ion-icon>
+                {{seance.professor}}
+              </ion-card-subtitle>
+              <div>
+                <ion-icon name="calendar"></ion-icon>
+                {{seance.date}}
+              </div>
+              <div>
+                <ion-icon name="time"></ion-icon>
+                {{seance.startTime}} > {{seance.endTime}}
+              </div>
+              <div>
+                <ion-icon name="close-circle"></ion-icon>
+                {{seance.nbAbsByCourseMax}} absences au maximum avant élimination
+              </div>
+          </ion-card-content>
         </ion-card>
   </ion-list>
   

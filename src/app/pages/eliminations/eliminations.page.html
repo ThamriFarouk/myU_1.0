@@ -1,0 +1,36 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Eliminations
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+
+    <p padding>
+        Quisque sed semper purus. Pellentesque faucibus ut sem quis maximus. Etiam sit amet hendrerit lectus. Curabitur bibendum justo ac neque efficitur aliquet vitae vel nisl. Integer eu suscipit ligula. Quisque vitae accumsan purus. Nullam scelerisque gravida ultricies.
+    </p>
+    <hr width="1" size="500">
+  
+    <ion-list *ngFor="let elimination of tabEliminations; let i = index">
+          <ion-card *ngIf="elimination.isEliminated()">
+            <ion-card-header color="danger" >
+                  <ion-card-title>
+                      {{elimination.course}}
+                  </ion-card-title>
+            </ion-card-header>
+            <ion-card-content padding>
+              <br>
+              <h1>
+                  Absences maximale permises: {{elimination.maxAbsencesAllowed}}
+              </h1>
+              Vous avez avez été éliminer de cette matiere en raison de vos absences répétitives !
+            </ion-card-content>
+          </ion-card>
+    </ion-list>
+
+</ion-content>

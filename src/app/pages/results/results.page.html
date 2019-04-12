@@ -3,17 +3,47 @@
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <ion-title>results</ion-title>
+    <ion-title>Resultats</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-list *ngFor="let res of tabResults[0]">
-      <ion-item><div color="primary">Resultat de la {{res.session}} {{res.classe}} {{res.schoolYear}}</div></ion-item>
-      <ion-item>Décision finale : {{res.decision}} avec la mention {{res.mention}}</ion-item>
-      <ion-item>Moyenne : {{res.average}}</ion-item>
-      <ion-item>Moyenne avant le Stage : {{res.avgBeforeInternship}}</ion-item><br><br>
+    <!-- <ion-select placeholder="Select One">
+        <ion-select-option value="f">Female</ion-select-option>
+        <ion-select-option value="m">Male</ion-select-option>
+      </ion-select>
+      <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select> -->
+
+  <ion-list *ngFor="let res of tabResults; let i = index">
+    <ion-title>
+        {{res.schoolYear}}
+    </ion-title>
+    <ion-card>
+        <ion-card-header color="medium" (click)="collapse(i)">
+              <ion-card-title>
+                  {{res.classe}} 
+                  <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
+                  <ion-icon style="float: right;" *ngIf="!collapseCard[i-1]" name="ios-arrow-down" slot="end"></ion-icon> 
+              </ion-card-title>
+              <ion-card-subtitle>
+                  Resultat {{res.type}} de la {{res.session}}
+              </ion-card-subtitle>   
+        </ion-card-header>
+        <ion-card-content *ngIf="!collapseCard[i-1]">
+            <ion-item>Décision finale : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.decision}}</ion-note></ion-item>
+            <ion-item>Moyenne : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.average}}</ion-note></ion-item>
+            <ion-item>Moyenne avant le Stage : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.avgBeforeInternship}}</ion-note></ion-item>
+            <ion-item>Mention : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.mention}}</ion-note></ion-item>
+        </ion-card-content>
+        
+    </ion-card>
+      
   </ion-list>
 
 </ion-content>

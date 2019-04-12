@@ -6,11 +6,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AbsencesPage } from './absences.page';
+import { EliminationsPage } from '../eliminations/eliminations.page';
+import { EliminationsPageModule } from '../eliminations/eliminations.module';
 
 const routes: Routes = [
   {
     path: '',
     component: AbsencesPage
+  },
+  {
+    path: 'eliminations',
+    loadChildren: '../eliminations/eliminations.module#eliminationPageModule'
   }
 ];
 
@@ -21,6 +27,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AbsencesPage]
+  declarations: [AbsencesPage, EliminationsPage]
 })
 export class AbsencesPageModule {}

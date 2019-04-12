@@ -8,23 +8,23 @@ import { Seance } from 'src/app/models/seance';
 import { Eliminations } from 'src/app/models/eliminations';
 
 @Component({
-  selector: 'app-absences',
-  templateUrl: './absences.page.html',
-  styleUrls: ['./absences.page.scss']
+  selector: 'app-eliminations',
+  templateUrl: './eliminations.page.html',
+  styleUrls: ['./eliminations.page.scss']
 })
-export class AbsencesPage implements OnInit {
+export class EliminationsPage implements OnInit {
   public Res: any[] = [];
   public Attendance: Attendance;
   public tabSeances: any[] = [];
   public nbAbsences: any;
   public Seances;
+  public tabEliminations: Eliminations[] = [];
+  public numberAbsence = 1;
 
   public collapseCard: boolean[] = [true, true, true];
   public collapseCardCourse: boolean[] = [true, true];
 
   public eliminationclicked = false;
-  public numberAbsence = 0;
-  public tabEliminations: Eliminations[];
 
   constructor(
     private studentAttend: GetStudentAttendanceService,
@@ -41,7 +41,11 @@ export class AbsencesPage implements OnInit {
       .subscribe(response => {
         this.Res.push(response);
         this.reorginizeResponse();
+        this.totalCourseAbsences(this.Attendance.seances);
+        this.unicityFonction(this.tabEliminations);
         this.Seances = this.Attendance.seances;
+        // console.log(this.Attendance);
+        // console.log(this.tabEliminations);
       });
   }
 
@@ -54,7 +58,11 @@ export class AbsencesPage implements OnInit {
       .subscribe(response => {
         this.Res.push(response);
         this.reorginizeResponse();
+        this.totalCourseAbsences(this.Attendance.seances);
+        this.unicityFonction(this.tabEliminations);
         this.Seances = this.Attendance.seances;
+        // console.log(this.Attendance);
+        // console.log(this.tabEliminations);
       });
   }
 
@@ -80,32 +88,60 @@ export class AbsencesPage implements OnInit {
     this.Attendance = new Attendance(this.nbAbsences, this.tabSeances);
   }
 
+  // calculate total absences for each course
+  totalCourseAbsences(tab) {
+    let i = 0;
+    while (i < tab.length) {
+      // console.log('i =' + i);
+      // console.log(tab[i]);
+      let j = i + 1;
+      while (j < tab.length) {
+        // console.log('j =' + j);
+        if (tab[i].course === tab[j].course) {
+          this.numberAbsence++;
+          // console.log(tab); // just for tests
+        }
+        j++;
+      }
+      this.tabEliminations.push(
+        new Eliminations(
+          tab[i].course,
+          this.numberAbsence,
+          tab[i].nbAbsByCourseMax
+        )
+      );
+      i++;
+    }
+  }
+
+  // deletes duplicated element in an array of units
+  unicityFonction(tab) {
+    let i = 0;
+    while (i < tab.length) {
+      // console.log('i =' + i);
+      // console.log(tab[i]);
+      let j = i + 1;
+      while (j < tab.length) {
+        // console.log('j =' + j);
+        if (tab[i].course === tab[j].course) {
+          // console.log(tab[j]);
+          tab.splice(j, 1);
+          // console.log('spliced' + '[' + i + ',' + j + ']');
+          // console.log(tab); // just for tests
+          j--;
+        }
+        j++;
+      }
+      i++;
+    }
+  }
+
   collapse(i) {
     this.collapseCard[i - 1] = !this.collapseCard[i - 1];
   }
 
   collapseCourse(j) {
     this.collapseCardCourse[j - 1] = !this.collapseCardCourse[j - 1];
-  }
-
-  swichToEliminations() {
-    if (!this.eliminationclicked) {
-      document
-        .getElementById('segEliminations')
-        .setAttribute('checked', 'true');
-      document.getElementById('segAbsences').setAttribute('checked', 'false');
-      this.eliminationclicked = true;
-    }
-  }
-
-  swichToAbsences() {
-    if (this.eliminationclicked) {
-      document
-        .getElementById('segEliminations')
-        .setAttribute('checked', 'false');
-      document.getElementById('segAbsences').setAttribute('checked', 'true');
-      this.eliminationclicked = false;
-    }
   }
 
   ngOnInit() {

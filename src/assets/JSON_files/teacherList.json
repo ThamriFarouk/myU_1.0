@@ -1,0 +1,134 @@
+[
+    {
+        "classId": 796,
+        "professors": [
+            {
+                "courseName": "Pathologie médicale 2 (Cours)",
+                "professorClassId": 28224,
+                "professorFullName": "ABD ERRAOUF MAHDI",
+                "professorId": 19261,
+                "evaluated": "1"
+            },
+            {
+                "courseName": "Pathologie médicale 2 (TP)",
+                "professorClassId": 99999,
+                "professorFullName": "FOULEN BEN FOULEN",
+                "professorId": 98453,
+                "evaluated": "4"
+            },
+            {
+                "courseName": "Pathologie chirurgicale 2 (Cours)",
+                "professorClassId": 28225,
+                "professorFullName": "AISSANI NADHIM",
+                "professorId": 19433,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Gériatrie (Cours)",
+                "professorClassId": 28226,
+                "professorFullName": "ARIDHI NAJLA",
+                "professorId": 19218,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Physiologie appliquée 2 (Cours)",
+                "professorClassId": 28227,
+                "professorFullName": "BAANANOU SAMEH",
+                "professorId": 19328,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Pharmacologie Spéciale 3 (Cours)",
+                "professorClassId": 28228,
+                "professorFullName": "BEN AISSIA MINYAR",
+                "professorId": 19416,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Anesthésie Générale 2 (Cours)",
+                "professorClassId": 28229,
+                "professorFullName": "BEN AMMAR YOUSSEF",
+                "professorId": 19388,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Hygiène hospitalière (Cours)",
+                "professorClassId": 19550,
+                "professorFullName": "CHEDIA ARFAOUI",
+                "professorId": 19449,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Réanimation 1 (Cours)",
+                "professorClassId": 19548,
+                "professorFullName": "FOUED DALY",
+                "professorId": 19420,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Techniques de soins en Anesthésie Réanimation 1 (TD) (TP)",
+                "professorClassId": 21491,
+                "professorFullName": "Guebsi Rim",
+                "professorId": 43391,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Médecine légale (Cours)",
+                "professorClassId": 19490,
+                "professorFullName": "HAMDOUN MONCEF",
+                "professorId": 19367,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Pathologie Médicale 1 (Cours)",
+                "professorClassId": 19486,
+                "professorFullName": "Haykel ABDELHADI",
+                "professorId": 18818,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "  Anglais 3 (Cours) (Cours)",
+                "professorClassId": 19551,
+                "professorFullName": "ICHRAK HAMDANI",
+                "professorId": 19347,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Anesthésie Génerale 1 (Cours)",
+                "professorClassId": 19489,
+                "professorFullName": "Khaled LAMINE",
+                "professorId": 18887,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Stage 3 et pratiques des soins en Réanimation1 (Stage)",
+                "professorClassId": 21244,
+                "professorFullName": "MOHAMED SALEH MANAI",
+                "professorId": 23085,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Pharmacologie Spéciale 2 (Cours)",
+                "professorClassId": 19488,
+                "professorFullName": "MONDHER HALOUES",
+                "professorId": 19440,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Pathologie Chirurgicale 1 (Cours)",
+                "professorClassId": 19487,
+                "professorFullName": "OUSSAMA BARAKET",
+                "professorId": 18826,
+                "evaluated": "0"
+            },
+            {
+                "courseName": "Physiologie Appliquée 1 (Cours)",
+                "professorClassId": 25655,
+                "professorFullName": "Walid Zribi",
+                "professorId": 45340,
+                "evaluated": "0"
+            }
+        ],
+        "className": "LA_ANEST_2_1"
+    }
+]

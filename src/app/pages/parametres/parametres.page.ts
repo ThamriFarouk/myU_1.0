@@ -60,24 +60,24 @@ export class ParametresPage implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private theme: ThemeService
-    ) {
-      this.initializeApp();
-    }
+  ) {
+    this.initializeApp();
+  }
 
-    changeTheme(name) {
-      this.theme.setTheme(themes[name]);
-    }
-  
-    changeSpeed(val) {
-      this.theme.setVariable('--speed', `${val}ms`);
-    }
-  
-    initializeApp() {
-      this.platform.ready().then(() => {
-        this.statusBar.styleDefault();
-        this.splashScreen.hide();
-      });
-    }
+  changeTheme(name) {
+    this.theme.setTheme(themes[name]);
+  }
+
+  changeSpeed(val) {
+    this.theme.setVariable('--speed', `${val}ms`);
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+  }
 
   ngOnInit() {
   }

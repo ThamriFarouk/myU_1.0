@@ -1,14 +1,15 @@
 export class Teacher {
-
-
-    constructor(public id: number, public name: String) {
-
-    }
-
-    public static fromJson(json: Object): Teacher {
-        return new Teacher (
-            json['id'],
-           json['name']
-            );
-    }
+  constructor(
+    public id,
+    public classId,
+    public fullName,
+    public evaluation,
+    public course
+  ) {
+    this.id = id;
+    this.classId = classId;
+    this.fullName = fullName;
+    this.evaluation = evaluation;
+    this.course = course;
+  }
 }
