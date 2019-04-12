@@ -10,43 +10,39 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class AuthentificationService {
-
   authenticationState = new BehaviorSubject(false);
 
   constructor(
     private storage: Storage,
     private plt: Platform,
-    private loadingCtrl: LoadingController,
-    ) 
-    {
+    private loadingCtrl: LoadingController
+  ) {
     this.plt.ready().then(() => {
       this.checkToken();
     });
+  }
 
-   }
-
-    login() {
+  login() {
     return this.storage.set(TOKEN_KEY, 'WIRO14521').then(res => {
       this.authenticationState.next(true);
     });
-   }
+  }
 
-   logout() {
+  logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
     });
-   }
+  }
 
-   isAuthenticated() {
+  isAuthenticated() {
     return this.authenticationState.value;
-   }
+  }
 
-   checkToken() {
+  checkToken() {
     return this.storage.get(TOKEN_KEY).then(res => {
       if (res) {
         this.authenticationState.next(true);
       }
     });
-   }
-
+  }
 }
