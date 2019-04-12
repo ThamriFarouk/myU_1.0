@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-<ion-item>
+<ion-button>
     <ion-label>Orginize by</ion-label>
     <ion-select placeholder="Select One">
       <ion-select-option value="Teachers">Teachers</ion-select-option>
       <ion-select-option value="Course">Course</ion-select-option>
     </ion-select>
-  </ion-item>
+  </ion-button>
   <ion-list class="hi" *ngFor="let teacher of tabTeachers">
     <ion-item>
       {{ teacher.fullName }}
