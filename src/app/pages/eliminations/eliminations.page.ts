@@ -41,9 +41,9 @@ export class EliminationsPage implements OnInit {
       .subscribe(response => {
         this.Res.push(response);
         this.reorginizeResponse();
-        this.totalCourseAbsences(this.Attendance.seances);
+        this.totalCourseAbsences(this.Attendance.getSeances());
         this.unicityFonction(this.tabEliminations);
-        this.Seances = this.Attendance.seances;
+        this.Seances = this.Attendance.getSeances();
         // console.log(this.Attendance);
         // console.log(this.tabEliminations);
       });
@@ -58,9 +58,9 @@ export class EliminationsPage implements OnInit {
       .subscribe(response => {
         this.Res.push(response);
         this.reorginizeResponse();
-        this.totalCourseAbsences(this.Attendance.seances);
+        this.totalCourseAbsences(this.Attendance.getSeances());
         this.unicityFonction(this.tabEliminations);
-        this.Seances = this.Attendance.seances;
+        this.Seances = this.Attendance.getSeances();
         // console.log(this.Attendance);
         // console.log(this.tabEliminations);
       });

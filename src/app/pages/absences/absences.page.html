@@ -30,26 +30,26 @@
         <ion-card>
           <ion-card-header color="warning" (click)="collapse(i)">
                 <ion-card-title>
-                    {{seance.course}}
+                    {{seance.getCourse()}}
                 </ion-card-title>
           </ion-card-header>
           <ion-card-content padding *ngIf="!collapseCard[i-1]">
             <br>
               <ion-card-subtitle>
                 <ion-icon name="man"></ion-icon>
-                {{seance.professor}}
+                {{seance.getProfessor()}}
               </ion-card-subtitle>
               <div>
                 <ion-icon name="calendar"></ion-icon>
-                {{seance.date}}
+                {{seance.getDate()}}
               </div>
               <div>
                 <ion-icon name="time"></ion-icon>
-                {{seance.startTime}} > {{seance.endTime}}
+                {{seance.getStartTime()}} > {{seance.getEndTime()}}
               </div>
               <div>
                 <ion-icon name="close-circle"></ion-icon>
-                {{seance.nbAbsByCourseMax}} absences au maximum avant élimination
+                {{seance.getNbAbsByCourseMax()}} absences au maximum avant élimination
               </div>
           </ion-card-content>
         </ion-card>

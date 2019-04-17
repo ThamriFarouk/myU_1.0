@@ -3,7 +3,7 @@ import { Person } from './person';
 
 export class Teacher extends Person {
   private classId: number;
-  private evaluation: number;
+  private evaluation: String;
   private course: String;
 
   constructor(id, classId, fullName, evaluation, course) {
@@ -21,11 +21,11 @@ export class Teacher extends Person {
     this.classId = value;
   }
 
-  public getEvaluation(): number {
+  public getEvaluation(): String {
     return this.evaluation;
   }
 
-  public setEvaluation(value: number) {
+  public setEvaluation(value: String) {
     this.evaluation = value;
   }
 

@@ -22,24 +22,24 @@
 
   <ion-list *ngFor="let res of tabResults; let i = index">
     <ion-title>
-        {{res.schoolYear}}
+        {{res.getSchoolYear()}}
     </ion-title>
     <ion-card>
         <ion-card-header color="medium" (click)="collapse(i)">
               <ion-card-title>
-                  {{res.classe}} 
+                  {{res.getClasse()}} 
                   <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
                   <ion-icon style="float: right;" *ngIf="!collapseCard[i-1]" name="ios-arrow-down" slot="end"></ion-icon> 
               </ion-card-title>
               <ion-card-subtitle>
-                  Resultat {{res.type}} de la {{res.session}}
+                  Resultat {{res.getType()}} de la {{res.getSession()}}
               </ion-card-subtitle>   
         </ion-card-header>
         <ion-card-content *ngIf="!collapseCard[i-1]">
-            <ion-item>Décision finale : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.decision}}</ion-note></ion-item>
-            <ion-item>Moyenne : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.average}}</ion-note></ion-item>
-            <ion-item>Moyenne avant le Stage : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.avgBeforeInternship}}</ion-note></ion-item>
-            <ion-item>Mention : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.mention}}</ion-note></ion-item>
+            <ion-item>Décision finale : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.getDecision()}}</ion-note></ion-item>
+            <ion-item>Moyenne : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.getAverage()}}</ion-note></ion-item>
+            <ion-item>Moyenne avant le Stage : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.getAvgBeforeInternship()}}</ion-note></ion-item>
+            <ion-item>Mention : <ion-note style="font-size: 17px" slot="end" color="primary">{{res.getMention()}}</ion-note></ion-item>
         </ion-card-content>
         
     </ion-card>

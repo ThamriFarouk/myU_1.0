@@ -9,13 +9,13 @@
           <ion-card *ngIf="elimination.isEliminated()">
             <ion-card-header color="danger" >
                   <ion-card-title>
-                      {{elimination.course}}
+                      {{elimination.getCourse()}}
                   </ion-card-title>
             </ion-card-header>
             <ion-card-content padding>
               <br>
               <h1>
-                  Absences maximale permises: {{elimination.maxAbsencesAllowed}}
+                  Absences maximale permises: {{elimination.getMaxAbsencesAllowed()}}
               </h1>
               Vous avez avez été éliminer de cette matiere en raison de vos absences répétitives !
             </ion-card-content>

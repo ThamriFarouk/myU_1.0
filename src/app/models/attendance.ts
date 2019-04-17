@@ -1,10 +1,9 @@
-import { AbsenceByCourse } from './absenceByCourse';
 import { Seance } from './seance';
 
 export class Attendance {
   private nbAbsence: number;
   private seances: Seance[];
-  constructor(nbAbsence, seances: Seance[]) {
+  constructor(nbAbsence, seances) {
     this.nbAbsence = nbAbsence;
     this.seances = seances;
   }

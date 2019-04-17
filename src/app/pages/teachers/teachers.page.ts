@@ -59,7 +59,7 @@ export class TeachersPage implements OnInit {
         );
         // console.log(this.Res);
         console.log(this.TbyClasse);
-        this.reorginizeByCourse(this.TbyClasse.professors);
+        this.reorginizeByCourse(this.TbyClasse.getProfessors());
         // console.log(this.TbyClasse);
         // console.log(this.TbyCourse);
         this.unicityFonction(this.TbyCourse);

@@ -35,7 +35,7 @@
 
   
 
-    <ion-title>Unités:</ion-title>
+    <ion-title color="primary" padding style="font-size: 35px;">Unités:</ion-title>
 
     <ion-list *ngFor="let unit of tabUnits; let i = index">
 
@@ -43,12 +43,12 @@
 
         <ion-card-header color="medium" (click)="collapseUnit(i)">
           <ion-card-title >
-              {{unit.name}}
+              {{unit.getName()}}
           </ion-card-title>
           <ion-card-subtitle *ngIf="!collapseCard[i-1]">
               Coefficient: 
               <ion-col color="primary" style="font-weight: bold; text-align: right">
-                {{unit.coef}}
+                {{unit.getCoef()}}
               </ion-col>
             </ion-card-subtitle>
         </ion-card-header>
@@ -57,14 +57,14 @@
                     
                     <ion-list lines="none" *ngFor="let course of tabUnits[i].Courses; let j = index">
                       <ion-item button (click)="collapseCourse(j)">
-                            {{course.name}} <br>
-                          Coefficient: {{course.coef}}
+                            {{course.getName()}} <br>
+                          Coefficient: {{course.getCoef()}}
                           <ion-icon *ngIf="collapseCardCourse[j-1]" name="ios-arrow-forward" slot="end"></ion-icon>
                           <ion-icon *ngIf="!collapseCardCourse[j-1]" name="ios-arrow-down" slot="end"></ion-icon>
                       </ion-item>
                       <ion-card-content *ngIf="!collapseCardCourse[j-1]">
                         <ion-list lines="inset" *ngFor="let evaluation of tabUnits[i].Courses[j].Evaluations">
-                          <ion-item>{{evaluation.name}}<ion-note style="font-size: 17px" color="primary" slot="end">{{evaluation.note}}</ion-note></ion-item>
+                          <ion-item>{{evaluation.getName()}}<ion-note style="font-size: 17px" color="primary" slot="end">{{evaluation.getNote()}}</ion-note></ion-item>
                         </ion-list>
                       </ion-card-content>
                     </ion-list>

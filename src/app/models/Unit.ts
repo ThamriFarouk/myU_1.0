@@ -4,7 +4,7 @@ export class Unit {
   private name: string;
   private coef: number;
   private Courses: Course[];
-  constructor(name: string, coef: number, Courses: Course[]) {
+  constructor(name, coef, Courses) {
     this.name = name;
     this.coef = coef;
     this.Courses = Courses;

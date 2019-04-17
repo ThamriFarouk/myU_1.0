@@ -41,7 +41,7 @@ export class AbsencesPage implements OnInit {
       .subscribe(response => {
         this.Res.push(response);
         this.reorginizeResponse();
-        this.Seances = this.Attendance.seances;
+        this.Seances = this.Attendance.getSeances();
       });
   }
 
@@ -54,7 +54,7 @@ export class AbsencesPage implements OnInit {
       .subscribe(response => {
         this.Res.push(response);
         this.reorginizeResponse();
-        this.Seances = this.Attendance.seances;
+        this.Seances = this.Attendance.getSeances();
       });
   }
 

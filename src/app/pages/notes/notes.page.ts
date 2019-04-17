@@ -44,9 +44,11 @@ export class NotesPage implements OnInit {
         this.unicityFonction(this.tabUnits);
 
         for (let i = 0; i < this.tabUnits.length; i++) {
-          this.unicityFonction(this.tabUnits[i].Courses);
-          for (let j = 0; j < this.tabUnits[i].Courses.length; j++) {
-            this.unicityFonction(this.tabUnits[i].Courses[j].Evaluations);
+          this.unicityFonction(this.tabUnits[i].getCourses());
+          for (let j = 0; j < this.tabUnits[i].getCourses().length; j++) {
+            this.unicityFonction(
+              this.tabUnits[i].getCourses()[j].getEvaluations()
+            );
           }
         }
       });
@@ -67,9 +69,11 @@ export class NotesPage implements OnInit {
         this.unicityFonction(this.tabUnits);
 
         for (let i = 0; i < this.tabUnits.length; i++) {
-          this.unicityFonction(this.tabUnits[i].Courses);
-          for (let j = 0; j < this.tabUnits[i].Courses.length; j++) {
-            this.unicityFonction(this.tabUnits[i].Courses[j].Evaluations);
+          this.unicityFonction(this.tabUnits[i].getCourses());
+          for (let j = 0; j < this.tabUnits[i].getCourses().length; j++) {
+            this.unicityFonction(
+              this.tabUnits[i].getCourses()[j].getEvaluations()
+            );
           }
         }
       });
@@ -92,8 +96,8 @@ export class NotesPage implements OnInit {
   putEvalsInCourse() {
     for (let i = 0; i < this.tabEvals.length; i++) {
       for (let j = 0; j < this.tabCourses.length; j++) {
-        if (this.tabEvals[i].courseName === this.tabCourses[j].name) {
-          this.tabCourses[j].Evaluations.push(this.tabEvals[i]);
+        if (this.tabEvals[i].getCourseName() === this.tabCourses[j].getName()) {
+          this.tabCourses[j].getEvaluations().push(this.tabEvals[i]);
         }
       }
     }
@@ -103,8 +107,8 @@ export class NotesPage implements OnInit {
   putCoursesInUnit() {
     for (let i = 0; i < this.tabCourses.length; i++) {
       for (let j = 0; j < this.tabUnits.length; j++) {
-        if (this.tabCourses[i].unitName === this.tabUnits[j].name) {
-          this.tabUnits[j].Courses.push(this.tabCourses[i]);
+        if (this.tabCourses[i].getUnitName() === this.tabUnits[j].getName()) {
+          this.tabUnits[j].getCourses().push(this.tabCourses[i]);
         }
       }
     }

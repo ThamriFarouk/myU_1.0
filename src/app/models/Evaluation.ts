@@ -2,7 +2,7 @@ export class Evaluation {
   private name: string;
   private courseName: string;
   private note: number;
-  constructor(name: string, courseName: string, note: number) {
+  constructor(name, courseName, note) {
     this.name = name;
     this.courseName = courseName;
     this.note = note;

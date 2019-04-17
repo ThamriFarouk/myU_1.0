@@ -5,12 +5,7 @@ export class Course {
   private coef: number;
   private unitName: String;
   private Evaluations: Evaluation[];
-  constructor(
-    name: String,
-    coef: number,
-    unitName: String,
-    Evaluations: Evaluation[]
-  ) {
+  constructor(name, coef, unitName, Evaluations) {
     this.name = name;
     this.coef = coef;
     this.unitName = unitName;
