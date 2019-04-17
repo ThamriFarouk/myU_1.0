@@ -18,6 +18,14 @@ export class TeachersPage implements OnInit {
   public TbyCourse: TeacherByCourse[] = [];
   public tabTeachers: Teacher[] = [];
   public tabT: Teacher[] = [];
+  public organizedByTeacher = true;
+
+  public customAlertOptions: any = {
+    header: 'Organiser par:',
+    // subHeader: 'Select your toppings',
+    // message: '$1.00 per topping',
+    translucent: true
+  };
 
   constructor(
     public teacherService: TeacherListService,
@@ -56,7 +64,7 @@ export class TeachersPage implements OnInit {
         // console.log(this.TbyCourse);
         this.unicityFonction(this.TbyCourse);
         // console.log(this.TbyClasse);
-        // console.log(this.TbyCourse);
+        console.log(this.TbyCourse);
         console.log(this.tabTeachers);
       });
   }
@@ -118,6 +126,21 @@ export class TeachersPage implements OnInit {
   splitString(str: string, c: string) {
     const index = str.indexOf(c);
     return str.slice(0, index - 1);
+  }
+
+  // organizeByTeacher() {
+  //   let x = document.getElementById('optionTeacher').getAttribute('value');
+  //   console.log(x);
+  //   if ((x = 'Teachers')) {
+  //     console.log(x);
+  //     return true;
+  //   } else if ((x = 'Course')) {
+  //     return false;
+  //   }
+  // }
+
+  organizeByTeacher() {
+    this.organizedByTeacher = !this.organizedByTeacher;
   }
 
   ngOnInit() {

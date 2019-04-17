@@ -12,4 +12,10 @@ export class Teacher {
     this.evaluation = evaluation;
     this.course = course;
   }
+
+  getCourseType() {
+    const i = this.course.indexOf('(');
+    const courseType = this.course.slice(i, this.course.length);
+    return courseType;
+  }
 }

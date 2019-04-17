@@ -7,10 +7,9 @@
   </ion-toolbar>
 
   <ion-tab-bar>
-    <ion-label>Organiser par:</ion-label>
-    <ion-select placeholder="Organize by">
-      <ion-select-option selected value="Teachers">Teachers</ion-select-option>
-      <ion-select-option color="primary" value="Course">Course</ion-select-option>
+    <ion-select [interfaceOptions]="customAlertOptions" id="organizedBy" placeholder="Organize by" (ionChange)="organizeByTeacher()">
+      <ion-select-option id="teacherOption" selected value="Teachers">Enseignants</ion-select-option>
+      <ion-select-option id="courseOption" color="primary" value="Course">Matieres</ion-select-option>
     </ion-select>
   </ion-tab-bar>
 
@@ -21,19 +20,58 @@
   <p padding>
       Quisque sed semper purus. Pellentesque faucibus ut sem quis maximus. Etiam sit amet hendrerit lectus. Curabitur bibendum justo ac neque efficitur aliquet vitae vel nisl. Integer eu suscipit ligula. Quisque vitae accumsan purus. Nullam scelerisque gravida ultricies.
   </p>
-  <ion-title color="primary" padding style="font-size: 35px">Enseignants:</ion-title>
-  <ion-list *ngFor="let teacher of tabTeachers">
-    <div style="padding-left: 32px">
-      <ion-label style="font-size: 25px; text-decoration: underline">
-        {{teacher.fullName}}
-      </ion-label>
-      <p color="medium" style="margin-bottom: 12px">Matiere: {{teacher.course}}</p>
-      <ion-label *ngIf="teacher.evaluation != ''">Evaluation: {{teacher.evaluation}}/5</ion-label> <br>
-      
-    </div>
-    <ion-item style="padding-left: 0px">
-      <ion-button slot="end" size="small" color="success" style="margin-left: 4px">Evaluer</ion-button>
-      <ion-button slot="end" size="small" color="warning" style="margin-left: 4px">Consulter</ion-button>
-    </ion-item>
-  </ion-list>
+
+  <div *ngIf="organizedByTeacher">
+    <ion-title color="primary" padding style="font-size: 35px; padding-left: 30px">Enseignants:</ion-title>
+    <ion-list *ngFor="let teacher of tabTeachers">
+      <div style="padding-left: 32px">
+        <ion-label color="secondary" style="font-size: 25px; text-decoration: underline">
+          {{teacher.fullName}}
+        </ion-label>
+        <p color="medium" style="margin-bottom: 12px; padding-left: 16px">
+          Matiere: {{teacher.course}}
+        </p>
+        <ion-label style="padding-left: 16px" *ngIf="teacher.evaluation != ''">Evaluation: {{teacher.evaluation}}/5</ion-label> <br>
+      </div>
+      <ion-item style="padding-left: 0px">
+        <ion-button slot="end" size="small" color="success" style="margin-left: 4px">Evaluer</ion-button>
+        <ion-button slot="end" size="small" color="warning" style="margin-left: 4px">Consulter</ion-button>
+      </ion-item>
+    </ion-list> 
+  </div>
+
+  <div *ngIf="!organizedByTeacher">
+    <ion-title color="primary" padding style="font-size: 35px; padding-left: 30px">Matieres:</ion-title>
+    <ion-list *ngFor="let course of TbyCourse">
+      <div style="padding-left: 32px">
+        <ion-label color="secondary" style="font-size: 25px; text-decoration: underline">
+          {{course.course}}:
+        </ion-label>      
+        <ion-list *ngFor="let teacher of course.professors">
+        <ion-item style="padding-left: 0px">
+          {{teacher.fullName}} {{teacher.getCourseType()}}
+          <ion-button slot="end" size="small" color="success" style="margin-left: 4px">Evaluer</ion-button>
+          <ion-button slot="end" size="small" color="warning" style="margin-left: 4px">Consulter</ion-button>
+        </ion-item>
+      </ion-list>
+      </div>
+    </ion-list>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </ion-content>
