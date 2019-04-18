@@ -28,11 +28,17 @@ export class StudentResults {
   }
 
   test() {
-    if (this.avgBeforeInternship === '') {
+    if (
+      this.avgBeforeInternship === '' ||
+      this.avgBeforeInternship === '0,00'
+    ) {
       this.avgBeforeInternship = '~';
     }
     if (this.mention === '') {
       this.mention = '~';
+    }
+    if (this.average === '0,00') {
+      this.average = '~';
     }
   }
 
