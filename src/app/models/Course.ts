@@ -1,10 +1,10 @@
 import { Evaluation } from './evaluation';
 
 export class Course {
-  private name: String;
-  private coef: number;
-  private unitName: String;
-  private Evaluations: Evaluation[];
+  public name: String;
+  public coef: number;
+  public unitName: String;
+  public Evaluations: Evaluation[];
   constructor(name, coef, unitName, Evaluations) {
     this.name = name;
     this.coef = coef;

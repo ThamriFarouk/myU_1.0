@@ -28,7 +28,7 @@ export class InternshipsPage implements OnInit {
       .subscribe(res => {
         this.tabInternship.push(res);
         this.tabInternship[0] = this.tabInternship[0].reverse();
-        // console.log(this.tabInternship);
+        console.log(this.tabInternship);
       });
   }
 
