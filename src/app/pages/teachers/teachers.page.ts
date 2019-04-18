@@ -33,6 +33,7 @@ export class TeachersPage implements OnInit {
     private nativeHttp: HTTP
   ) {}
 
+  // API from local
   async getTeacherList() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -69,6 +70,7 @@ export class TeachersPage implements OnInit {
       });
   }
 
+  // API from server
   async getTeacherLists(id) {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -77,6 +79,31 @@ export class TeachersPage implements OnInit {
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
         this.Res.push(response);
+        this.Res[0][0].professors.forEach(element => {
+          this.tabTeachers.push(
+            new Teacher(
+              element.professorId,
+              element.professorClassId,
+              element.professorFullName,
+              element.evaluated,
+              element.courseName
+            )
+          );
+        });
+        this.TbyClasse = new TeacherByClasse(
+          this.Res[0][0].classId,
+          this.Res[0][0].className,
+          this.tabTeachers
+        );
+        // console.log(this.Res);
+        console.log(this.TbyClasse);
+        this.reorginizeByCourse(this.TbyClasse.getProfessors());
+        // console.log(this.TbyClasse);
+        // console.log(this.TbyCourse);
+        this.unicityFonction(this.TbyCourse);
+        // console.log(this.TbyClasse);
+        console.log(this.TbyCourse);
+        console.log(this.tabTeachers);
       });
   }
 
@@ -127,17 +154,6 @@ export class TeachersPage implements OnInit {
     const index = str.indexOf(c);
     return str.slice(0, index - 1);
   }
-
-  // organizeByTeacher() {
-  //   let x = document.getElementById('optionTeacher').getAttribute('value');
-  //   console.log(x);
-  //   if ((x = 'Teachers')) {
-  //     console.log(x);
-  //     return true;
-  //   } else if ((x = 'Course')) {
-  //     return false;
-  //   }
-  // }
 
   organizeByTeacher() {
     this.organizedByTeacher = !this.organizedByTeacher;

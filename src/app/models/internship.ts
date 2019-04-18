@@ -1,5 +1,7 @@
 import { Meeting } from './meeting';
 import { Supervisor } from './supervisor';
+import { Teacher } from './teacher';
+import { Student } from './student';
 
 export class Internship {
   private id: number;
@@ -8,11 +10,11 @@ export class Internship {
   private startDate: String;
   private endDate: String;
   private organisation: String;
-  private students: String;
+  private students: Student[];
   private internshipTerritory: String;
   private published: String;
   private title: String;
-  private professors: String;
+  private professors: Teacher[];
   private schoolYear: String;
   private meetings: Meeting[];
   private internshipUnit: String;
@@ -78,7 +80,7 @@ export class Internship {
     return this.organisation;
   }
 
-  public getStudents(): String {
+  public getStudents(): Student[] {
     return this.students;
   }
 
@@ -94,7 +96,7 @@ export class Internship {
     return this.title;
   }
 
-  public getProfessors(): String {
+  public getProfessors(): Teacher[] {
     return this.professors;
   }
 
@@ -142,7 +144,7 @@ export class Internship {
     this.organisation = value;
   }
 
-  public setStudents(value: String) {
+  public setStudents(value: Student[]) {
     this.students = value;
   }
 
@@ -158,7 +160,7 @@ export class Internship {
     this.title = value;
   }
 
-  public setProfessors(value: String) {
+  public setProfessors(value: Teacher[]) {
     this.professors = value;
   }
 

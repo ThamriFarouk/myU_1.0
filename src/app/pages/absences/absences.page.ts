@@ -18,10 +18,8 @@ export class AbsencesPage implements OnInit {
   public tabSeances: any[] = [];
   public nbAbsences: any;
   public Seances;
-
   public collapseCard: boolean[] = [true, true, true];
   public collapseCardCourse: boolean[] = [true, true];
-
   public eliminationclicked = false;
   public numberAbsence = 0;
   public tabEliminations: Eliminations[];
@@ -32,6 +30,7 @@ export class AbsencesPage implements OnInit {
     private loadingCtrl: LoadingController
   ) {}
 
+  // API from local
   async getstudentAttendance() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -45,6 +44,7 @@ export class AbsencesPage implements OnInit {
       });
   }
 
+  // API from server
   async getstudentAttendances(id) {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -58,6 +58,7 @@ export class AbsencesPage implements OnInit {
       });
   }
 
+  // puts json object response into organized arrays
   reorginizeResponse() {
     this.Res[0].nbAbsencesByCourse.forEach(element => {
       this.Res[0].seances.forEach(elem => {
@@ -88,6 +89,7 @@ export class AbsencesPage implements OnInit {
     this.collapseCardCourse[j - 1] = !this.collapseCardCourse[j - 1];
   }
 
+  // Manipulate the DOM to let the displaying of the eliminations
   swichToEliminations() {
     if (!this.eliminationclicked) {
       document
@@ -98,6 +100,7 @@ export class AbsencesPage implements OnInit {
     }
   }
 
+  // Manipulate the DOM to let the displaying of the Absences
   swichToAbsences() {
     if (this.eliminationclicked) {
       document

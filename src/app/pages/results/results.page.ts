@@ -13,7 +13,6 @@ import { StudentResults } from 'src/app/models/studentResults';
 export class ResultsPage implements OnInit {
   public Res: any[] = [];
   public tabResults: StudentResults[] = [];
-
   public collapseCard: boolean[] = [true, true];
 
   constructor(
@@ -22,6 +21,7 @@ export class ResultsPage implements OnInit {
     private nativeHttp: HTTP
   ) {}
 
+  // API from local
   async getstudentResult() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -40,6 +40,7 @@ export class ResultsPage implements OnInit {
       });
   }
 
+  // API from server
   async getstudentResults(id) {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -76,6 +77,7 @@ export class ResultsPage implements OnInit {
     });
   }
 
+  // collapsable cards
   collapse(i) {
     this.collapseCard[i - 1] = !this.collapseCard[i - 1];
   }

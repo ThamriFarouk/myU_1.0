@@ -43,6 +43,11 @@ const routes: Routes = [
         loadChildren: '../internships/internships.module#InternshipsPageModule'
       },
       {
+        path: 'internship-details/:id',
+        loadChildren:
+          '../internship-details/internship-details.module#InternshipDetailsPageModule'
+      },
+      {
         path: 'teachers',
         loadChildren: '../teachers/teachers.module#TeachersPageModule'
       }

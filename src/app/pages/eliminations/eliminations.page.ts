@@ -20,10 +20,8 @@ export class EliminationsPage implements OnInit {
   public Seances;
   public tabEliminations: Eliminations[] = [];
   public numberAbsence = 1;
-
   public collapseCard: boolean[] = [true, true, true];
   public collapseCardCourse: boolean[] = [true, true];
-
   public eliminationclicked = false;
 
   constructor(
@@ -32,6 +30,7 @@ export class EliminationsPage implements OnInit {
     private loadingCtrl: LoadingController
   ) {}
 
+  // API from local
   async getstudentAttendance() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -49,6 +48,7 @@ export class EliminationsPage implements OnInit {
       });
   }
 
+  // API from server
   async getstudentAttendances(id) {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -66,6 +66,7 @@ export class EliminationsPage implements OnInit {
       });
   }
 
+  // puts json object response into organized arrays
   reorginizeResponse() {
     this.Res[0].nbAbsencesByCourse.forEach(element => {
       this.Res[0].seances.forEach(elem => {

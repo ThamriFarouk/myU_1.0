@@ -1,4 +1,3 @@
-import { inherits } from 'util';
 import { Person } from './person';
 
 export class Teacher extends Person {
@@ -11,6 +10,22 @@ export class Teacher extends Person {
     this.classId = classId;
     this.evaluation = evaluation;
     this.course = course;
+  }
+
+  public hetId() {
+    return 1;
+  }
+
+  public setId(value: number) {
+    super.setId(value);
+  }
+
+  public getFullName(): String {
+    return super.getFullName();
+  }
+
+  public setFullName(value: String) {
+    super.setFullName(value);
   }
 
   public getClassId(): number {

@@ -52,7 +52,7 @@ export class MenuPage implements OnInit {
     {
       title: 'Déconnexion',
       url: '/login',
-      icon: 'log-out',
+      icon: 'log-out'
     }
   ];
 
@@ -88,11 +88,10 @@ export class MenuPage implements OnInit {
 
   selectedPath = '';
 
-
   constructor(
     private router: Router,
     private authService: AuthentificationService,
-    private loadingCtrl: LoadingController,
+    private loadingCtrl: LoadingController
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
@@ -100,12 +99,11 @@ export class MenuPage implements OnInit {
   }
 
   async logout() {
-    let loading = await this.loadingCtrl.create();
+    const loading = await this.loadingCtrl.create();
     await loading.present();
     this.authService.logout();
     loading.dismiss();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
