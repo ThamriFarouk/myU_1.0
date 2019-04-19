@@ -28,7 +28,7 @@ export class InternshipsPage implements OnInit {
 
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
-    maxValue: 54
+    maxValue: 60
   };
 
   constructor(

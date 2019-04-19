@@ -9,6 +9,6 @@ import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 export class HomePage {
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
-    maxValue: 54
+    maxValue: 60
   };
 }

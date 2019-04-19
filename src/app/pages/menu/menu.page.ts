@@ -13,7 +13,11 @@ import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 export class MenuPage implements OnInit {
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
-    maxValue: 54
+    maxValue: 60
+  };
+  footerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-bottom',
+    maxValue: undefined
   };
 
   public appGeneralPages = [
