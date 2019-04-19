@@ -10,6 +10,10 @@
 </ion-header>
 
 
-<ion-content #pageContent padding>
+<ion-content #pageContent padding> 
+    <p padding>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
+    <ion-title>{{internship.getInternshipTerritory()}}</ion-title>
+  <ion-title>{{internship.getInternshipType()}} {{internship.getInternshipNature()}} </ion-title>
+  <h3><ion-label style="font-style: italic">Unité: </ion-label>{{internship.getInternshipUnit()}}</h3>
 
 </ion-content>

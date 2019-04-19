@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { from } from 'rxjs';
 import { GetStudentInternshipsService } from 'src/app/services/get-student-internships.service';
 import { Internship } from 'src/app/models/internship';
 import { Teacher } from 'src/app/models/teacher';
-import { Person } from 'src/app/models/person';
 import { Meeting } from 'src/app/models/meeting';
 import { Student } from 'src/app/models/student';
 import { Supervisor } from 'src/app/models/supervisor';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-internships',
@@ -19,6 +18,7 @@ import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 })
 export class InternshipsPage implements OnInit {
   url = '/etudiant/internship-details/';
+  public I: Internship = null;
   public Res: any[] = [];
   public tabInternships: Internship[] = [];
   public tabProfessors: Teacher[] = [];
@@ -33,8 +33,9 @@ export class InternshipsPage implements OnInit {
 
   constructor(
     public studentIS: GetStudentInternshipsService,
+    private storage: Storage,
     private loadingCtrl: LoadingController,
-    private nativeHttp: HTTP
+    private router: Router
   ) {}
 
   // API from local
@@ -57,7 +58,7 @@ export class InternshipsPage implements OnInit {
           this.tabStudents = [];
           this.tabSupervisors = [];
         }
-        console.log(this.tabInternships);
+        // console.log(this.tabInternships);
       });
   }
 
@@ -164,7 +165,21 @@ export class InternshipsPage implements OnInit {
     );
   }
 
+  async navigateToIntershipDetailFromId(id) {
+    let i = 0;
+    while (i < this.tabInternships.length) {
+      if (this.tabInternships[i].getId() === id) {
+        this.I = this.tabInternships[i];
+        break;
+      }
+      i++;
+    }
+    await this.storage.set('Internship', this.I);
+    await this.router.navigate([this.url + id]);
+  }
+
   ngOnInit() {
+    this.storage.remove('Internship');
     this.getstudentInternship();
     // this.getstudentInternships(4590,1);
   }

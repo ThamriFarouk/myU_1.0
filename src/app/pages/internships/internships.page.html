@@ -28,7 +28,7 @@
           <ion-card-subtitle>Status: {{internship.getStatus()}}</ion-card-subtitle>
           <br>
             <ion-label>
-              <ion-button slot="end" [routerDirection]="'forward'" [routerLink]="[url , internship.getId()]">
+              <ion-button slot="end" (click)="navigateToIntershipDetailFromId(internship.getId())">
                 Details
               </ion-button>
             </ion-label>
