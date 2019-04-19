@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-internship-details',
@@ -8,6 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InternshipDetailsPage implements OnInit {
   public internship_id;
+
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
 
   constructor(private route: ActivatedRoute) {}
 

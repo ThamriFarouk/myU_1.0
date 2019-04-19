@@ -9,8 +9,7 @@ import { ParametresPage } from './parametres.page';
 import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-
+import { ScrollHideModule } from 'src/app/directives/scroll-hide.module';
 
 const routes: Routes = [
   {
@@ -24,6 +23,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ScrollHideModule,
     RouterModule.forChild(routes),
     IonicStorageModule.forRoot()
   ],

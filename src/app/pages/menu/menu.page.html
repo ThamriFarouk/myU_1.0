@@ -3,13 +3,13 @@
 
     <ion-menu contentId="content">
 
-      <ion-header>
+      <ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
         <ion-toolbar color="primary">
           <ion-title>Université ABC</ion-title>
         </ion-toolbar>
       </ion-header>
 
-      <ion-content> 
+      <ion-content #pageContent> 
 
 
             <!-- <div>

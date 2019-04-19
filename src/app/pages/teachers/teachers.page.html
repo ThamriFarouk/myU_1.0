@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -15,7 +15,7 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding #pageContent>
   
   <p padding>
       Quisque sed semper purus. Pellentesque faucibus ut sem quis maximus. Etiam sit amet hendrerit lectus. Curabitur bibendum justo ac neque efficitur aliquet vitae vel nisl. Integer eu suscipit ligula. Quisque vitae accumsan purus. Nullam scelerisque gravida ultricies.

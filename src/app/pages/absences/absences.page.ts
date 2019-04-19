@@ -6,6 +6,7 @@ import { finalize } from 'rxjs/operators';
 import { Attendance } from 'src/app/models/attendance';
 import { Seance } from 'src/app/models/seance';
 import { Eliminations } from 'src/app/models/eliminations';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-absences',
@@ -23,6 +24,11 @@ export class AbsencesPage implements OnInit {
   public eliminationclicked = false;
   public numberAbsence = 0;
   public tabEliminations: Eliminations[];
+
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
 
   constructor(
     private studentAttend: GetStudentAttendanceService,

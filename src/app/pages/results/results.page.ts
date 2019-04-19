@@ -4,6 +4,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { StudentResults } from 'src/app/models/studentResults';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-results',
@@ -14,6 +15,11 @@ export class ResultsPage implements OnInit {
   public Res: any[] = [];
   public tabResults: StudentResults[] = [];
   public collapseCard: boolean[] = [true, true];
+
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
 
   constructor(
     public studentRes: GetStudentResultsService,

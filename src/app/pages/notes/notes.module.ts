@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
 import { NotesPage } from './notes.page';
-import { ResultsPageModule } from '../results/results.module';
-import { LoginPageModule } from '../login/login.module';
+import { ScrollHideDirective } from 'src/app/directives/scroll-hide.directive';
+import { ScrollHideModule } from 'src/app/directives/scroll-hide.module';
 
 const routes: Routes = [
   {
@@ -21,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ScrollHideModule,
     RouterModule.forChild(routes)
   ],
   declarations: [NotesPage]

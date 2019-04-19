@@ -6,6 +6,7 @@ import { finalize } from 'rxjs/operators';
 import { Attendance } from 'src/app/models/attendance';
 import { Seance } from 'src/app/models/seance';
 import { Eliminations } from 'src/app/models/eliminations';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-eliminations',
@@ -23,6 +24,11 @@ export class EliminationsPage implements OnInit {
   public collapseCard: boolean[] = [true, true, true];
   public collapseCardCourse: boolean[] = [true, true];
   public eliminationclicked = false;
+
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
 
   constructor(
     private studentAttend: GetStudentAttendanceService,

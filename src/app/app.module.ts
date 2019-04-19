@@ -13,10 +13,10 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HTTP } from '@ionic-native/http/ngx';
-
+import { ScrollHideDirective } from './directives/scroll-hide.directive';
 
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { finalize } from 'rxjs/operators';
 import { TeacherByClasse } from 'src/app/models/teacherByClasse';
 import { Teacher } from 'src/app/models/teacher';
 import { TeacherByCourse } from 'src/app/models/teacherByCourse';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-teachers',
@@ -25,6 +26,11 @@ export class TeachersPage implements OnInit {
     // subHeader: 'Select your toppings',
     // message: '$1.00 per topping',
     translucent: true
+  };
+
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 60
   };
 
   constructor(

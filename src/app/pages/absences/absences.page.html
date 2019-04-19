@@ -1,25 +1,26 @@
-<ion-header>
+<ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
   <ion-toolbar color="primary">
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
     <ion-title>Absences</ion-title>
   </ion-toolbar>
-  <ion-segment>
-      <ion-segment-button id="segAbsences" (click)="swichToAbsences()" checked>
-        <ion-label>Absences</ion-label>
-      </ion-segment-button>
-      <ion-segment-button id="segEliminations" (click)="swichToEliminations()">
-        <ion-label>Eliminations</ion-label>
-      </ion-segment-button>
-    </ion-segment>
 </ion-header>
 
-<ion-content *ngIf="eliminationclicked">
+<ion-segment>
+    <ion-segment-button id="segAbsences" (click)="swichToAbsences()" checked>
+      <ion-label>Absences</ion-label>
+    </ion-segment-button>
+    <ion-segment-button id="segEliminations" (click)="swichToEliminations()">
+      <ion-label>Eliminations</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+<ion-content #pageContent *ngIf="eliminationclicked">
   <app-eliminations></app-eliminations>
 </ion-content>
 
-<ion-content *ngIf="!eliminationclicked" padding>
+<ion-content #pageContent *ngIf="!eliminationclicked" padding>
 
   <p padding>
       Quisque sed semper purus. Pellentesque faucibus ut sem quis maximus. Etiam sit amet hendrerit lectus. Curabitur bibendum justo ac neque efficitur aliquet vitae vel nisl. Integer eu suscipit ligula. Quisque vitae accumsan purus. Nullam scelerisque gravida ultricies.

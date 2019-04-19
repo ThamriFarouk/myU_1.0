@@ -3,6 +3,7 @@ import { Router, RouterEvent } from '@angular/router';
 import { longStackSupport } from 'q';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoadingController } from '@ionic/angular';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-menu',
@@ -10,6 +11,11 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./menu.page.scss']
 })
 export class MenuPage implements OnInit {
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
+
   public appGeneralPages = [
     {
       title: 'Home',

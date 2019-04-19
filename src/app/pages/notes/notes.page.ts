@@ -5,7 +5,8 @@ import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { Unit } from 'src/app/models/Unit';
 import { Course } from 'src/app/models/Course';
-import { Evaluation } from 'src/app/models/Evaluation';
+import { Evaluation } from 'src/app/models/evaluation';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-notes',
@@ -22,6 +23,11 @@ export class NotesPage implements OnInit {
 
   public collapseCard: boolean[] = [true, true, true];
   public collapseCardCourse: boolean[] = [true, true];
+
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
 
   constructor(
     private studentEval: GetStudentEvaluationService,
@@ -166,12 +172,6 @@ export class NotesPage implements OnInit {
   collapseCourse(j) {
     this.collapseCardCourse[j - 1] = !this.collapseCardCourse[j - 1];
   }
-
-  //  scrollTo(element:string) {
-  //    let yOffset = document.getElementById(element).offsetTop;
-  //    let content = document.getElementById('content');
-  //    content.scrollTo(0, yOffset);
-  //  }
 
   ngOnInit() {
     this.getstudentEvaluation();

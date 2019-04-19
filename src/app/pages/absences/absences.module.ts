@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { AbsencesPage } from './absences.page';
 import { EliminationsPage } from '../eliminations/eliminations.page';
 import { EliminationsPageModule } from '../eliminations/eliminations.module';
+import { ScrollHideModule } from 'src/app/directives/scroll-hide.module';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ScrollHideModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AbsencesPage, EliminationsPage]

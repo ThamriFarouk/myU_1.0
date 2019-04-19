@@ -10,6 +10,7 @@ import { Person } from 'src/app/models/person';
 import { Meeting } from 'src/app/models/meeting';
 import { Student } from 'src/app/models/student';
 import { Supervisor } from 'src/app/models/supervisor';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
   selector: 'app-internships',
@@ -24,6 +25,11 @@ export class InternshipsPage implements OnInit {
   public tabMeetings: Meeting[] = [];
   public tabStudents: Student[] = [];
   public tabSupervisors: Supervisor[] = [];
+
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
 
   constructor(
     public studentIS: GetStudentInternshipsService,
@@ -51,7 +57,7 @@ export class InternshipsPage implements OnInit {
           this.tabStudents = [];
           this.tabSupervisors = [];
         }
-        // console.log(this.tabInternships);
+        console.log(this.tabInternships);
       });
   }
 

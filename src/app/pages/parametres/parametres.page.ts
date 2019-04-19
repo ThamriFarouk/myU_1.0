@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ThemeService } from 'src/app/services/theme.service';
+import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 const themes = {
   autumn: {
@@ -16,7 +17,7 @@ const themes = {
   },
   night: {
     primary: '#8CBA80',
-    secondary: '#FCFF6C',
+    secondary: '#7E3878',
     tertiary: '#FE5F55',
     light: '#495867',
     medium: '#BCC2C7',
@@ -45,15 +46,19 @@ const themes = {
     light: '#FCF7F8',
     medium: '#BC555D',
     dark: '#0B132B'
-  },
+  }
 };
 
 @Component({
   selector: 'app-parametres',
   templateUrl: './parametres.page.html',
-  styleUrls: ['./parametres.page.scss'],
+  styleUrls: ['./parametres.page.scss']
 })
 export class ParametresPage implements OnInit {
+  headerScrollConfig: ScrollHideConfig = {
+    cssProperty: 'margin-top',
+    maxValue: 54
+  };
 
   constructor(
     private platform: Platform,
@@ -79,7 +84,5 @@ export class ParametresPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

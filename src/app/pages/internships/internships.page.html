@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -9,10 +9,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content #pageContent padding>
 
-  <ion-button [routerDirection]="'forward'" [routerLink]="[url +'1']">see internship</ion-button>
-  
+  <p padding>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+      
+  <ion-title color="primary" padding style="font-size: 35px;">Stages:</ion-title>
+  <ion-list *ngFor="let internship of tabInternships; let i = index">
+      <ion-card color="medium">
+        <ion-card-header >
+          <ion-card-subtitle>{{internship.getInternshipTerritory()}}: {{internship.getInternshipNature()}}</ion-card-subtitle>
+          <ion-card-title >{{internship.getInternshipType()}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          
+          <ion-label>{{internship.getStartDate()}} - {{internship.getEndDate()}}</ion-label>
+          <ion-card-subtitle>{{internship.getOrganisation()}} </ion-card-subtitle>
+          <ion-card-subtitle>Status: {{internship.getStatus()}}</ion-card-subtitle>
+          <br>
+            <ion-label>
+              <ion-button slot="end" [routerDirection]="'forward'" [routerLink]="[url , internship.getId()]">
+                Details
+              </ion-button>
+            </ion-label>
+              
+                    
+                    <!-- <ion-list lines="none" *ngFor="let course of tabUnits[i].Courses; let j = index">
+                      <ion-item button>
+                            {{course.getName()}} <br>
+                          Coefficient: {{course.getCoef()}}
+                          <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+                          <ion-icon name="ios-arrow-down" slot="end"></ion-icon>
+                      </ion-item>
+                      <ion-card-content *ngIf="!collapseCardCourse[j-1]">
+                        <ion-list lines="inset" *ngFor="let evaluation of tabUnits[i].Courses[j].Evaluations">
+                          <ion-item>{{evaluation.getName()}}<ion-note style="font-size: 17px" color="primary" slot="end">{{evaluation.getNote()}}</ion-note></ion-item>
+                        </ion-list>
+                      </ion-card-content>
+                    </ion-list> -->
+        </ion-card-content>
+
+      </ion-card>
+
+    </ion-list>
 
 
 </ion-content>
