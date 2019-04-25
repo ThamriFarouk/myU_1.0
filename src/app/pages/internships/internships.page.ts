@@ -28,7 +28,7 @@ export class InternshipsPage implements OnInit {
 
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
-    maxValue: 60
+    maxValue: 40
   };
 
   constructor(
@@ -58,7 +58,7 @@ export class InternshipsPage implements OnInit {
           this.tabStudents = [];
           this.tabSupervisors = [];
         }
-        // console.log(this.tabInternships);
+        console.log(this.tabInternships);
       });
   }
 
@@ -165,22 +165,25 @@ export class InternshipsPage implements OnInit {
     );
   }
 
-  async navigateToIntershipDetailFromId(id) {
+  navigateToIntershipDetailFromId(id) {
     let i = 0;
     while (i < this.tabInternships.length) {
+      console.log(this.tabInternships[i]);
       if (this.tabInternships[i].getId() === id) {
         this.I = this.tabInternships[i];
-        break;
+        console.log(id);
+      } else {
+        console.log('Noooo');
       }
       i++;
     }
-    await this.storage.set('Internship', this.I);
-    await this.router.navigate([this.url + id]);
+    this.storage.set('Internship', this.I);
+    this.router.navigate([this.url + id]);
   }
 
   ngOnInit() {
-    this.storage.remove('Internship');
     this.getstudentInternship();
+    console.log(this.tabInternships);
     // this.getstudentInternships(4590,1);
   }
 }

@@ -1,0 +1,12 @@
+.description{
+    --color: initial;
+    display: block;
+    color: var(--color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 11px 0px 10px 16px;
+    text-decoration: underline;
+}

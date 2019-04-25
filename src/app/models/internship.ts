@@ -10,15 +10,15 @@ export class Internship {
   private startDate: String;
   private endDate: String;
   private organisation: String;
-  private students: Student[];
+  private students: Student[] = [];
   private internshipTerritory: String;
   private published: String;
   private title: String;
-  private professors: Teacher[];
+  private professors: Teacher[] = [];
   private schoolYear: String;
-  private meetings: Meeting[];
+  private meetings: Meeting[] = [];
   private internshipUnit: String;
-  private supervisor: Supervisor[];
+  private supervisor: Supervisor[] = [];
   private status: String;
   constructor(
     id,
@@ -54,6 +54,43 @@ export class Internship {
     this.internshipUnit = internshipUnit;
     this.supervisor = supervisor;
     this.status = status;
+  }
+
+  public checkEmptiness() {
+    if (this.getProfessors().length === 0) {
+      this.professors.push(
+        new Teacher(
+          undefined,
+          undefined,
+          "Pas d'enseignant assigné pour l'instant",
+          undefined,
+          undefined
+        )
+      );
+    }
+    if (this.getStudents().length === 0) {
+      this.students.push(
+        new Student("Pas d'étudiant assigné pour l'instant", undefined)
+      );
+    }
+    if (this.getSupervisor().length === 0) {
+      this.supervisor.push(
+        new Supervisor("Pas de superviseur assigné pour l'instant", undefined)
+      );
+    }
+    if (this.getMeetings().length === 0) {
+      this.meetings.push(
+        new Meeting(
+          "Pas de réunion fixé pour l'instant",
+          '~',
+          null,
+          '~',
+          '~',
+          '~'
+        )
+      );
+    }
+    // console.log(this);
   }
 
   public getId(): number {

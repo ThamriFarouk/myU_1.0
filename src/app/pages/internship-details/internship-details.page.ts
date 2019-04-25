@@ -15,15 +15,18 @@ import { Teacher } from 'src/app/models/teacher';
 })
 export class InternshipDetailsPage implements OnInit {
   public internship_id;
+  public Inter: Internship;
+  public tabInternship: Internship[] = [];
   public internship: Internship;
   public meetings: Meeting[] = [];
   public students: Student[] = [];
   public supervisors: Supervisor[] = [];
   public professors: Teacher[] = [];
+  public meetingsClicked = false;
 
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
-    maxValue: 60
+    maxValue: 40
   };
 
   constructor(private route: ActivatedRoute, private storage: Storage) {}
@@ -32,34 +35,35 @@ export class InternshipDetailsPage implements OnInit {
     // tslint:disable-next-line:radix
     this.internship_id = parseInt(this.route.snapshot.paramMap.get('id'));
     const x = this.storage.get('Internship');
-    console.log(x);
-    await this.storage.get('Internship').then(IS => {
-      console.log(IS);
+    this.storage.get('Internship').then(IS => {
       this.formatStudents(IS);
       this.formatProfessors(IS);
       this.formatMeetings(IS);
       this.formatSupervisors(IS);
-      this.internship = new Internship(
-        IS.id,
-        IS.internshipType,
-        IS.internshipNature,
-        IS.startDate,
-        IS.endDate,
-        IS.organisation,
-        this.students,
-        IS.internshipTerritory,
-        IS.published,
-        IS.title,
-        this.professors,
-        IS.schoolYear,
-        this.meetings,
-        IS.internshipUnit,
-        this.supervisors,
-        IS.status
+      this.tabInternship.push(
+        new Internship(
+          IS.id,
+          IS.internshipType,
+          IS.internshipNature,
+          IS.startDate,
+          IS.endDate,
+          IS.organisation,
+          this.students,
+          IS.internshipTerritory,
+          IS.published,
+          IS.title,
+          this.professors,
+          IS.schoolYear,
+          this.meetings,
+          IS.internshipUnit,
+          this.supervisors,
+          IS.status
+        )
       );
-      console.log(this.internship);
+      this.tabInternship[0].checkEmptiness();
+      console.log(this.tabInternship);
+      console.log(this.tabInternship[0].getSupervisor().length);
     });
-    console.log(this.internship);
   }
 
   formatMeetings(tab) {
@@ -67,12 +71,12 @@ export class InternshipDetailsPage implements OnInit {
       for (let i = 0; i < tab.meetings.length; i++) {
         this.meetings.push(
           new Meeting(
-            tab.meeting[i].description,
-            tab.meeting[i].startTime,
-            tab.meeting[i].id,
-            tab.meeting[i].place,
-            tab.meeting[i].endTime,
-            tab.meeting[i].status
+            tab.meetings[i].description,
+            tab.meetings[i].startTime,
+            tab.meetings[i].id,
+            tab.meetings[i].place,
+            tab.meetings[i].endTime,
+            tab.meetings[i].status
           )
         );
       }
@@ -90,7 +94,7 @@ export class InternshipDetailsPage implements OnInit {
   formatSupervisors(tab) {
     for (let i = 0; i < tab.supervisor.length; i++) {
       this.supervisors.push(
-        new Supervisor(tab.supervisorss[i].fullName, tab.supervisorss[i].id)
+        new Supervisor(tab.supervisor[i].fullName, tab.supervisor[i].id)
       );
     }
   }
@@ -109,7 +113,25 @@ export class InternshipDetailsPage implements OnInit {
     }
   }
 
+  swichToDetails() {
+    if (this.meetingsClicked) {
+      document.getElementById('segDetails').setAttribute('checked', 'true');
+      document.getElementById('segMeetings').setAttribute('checked', 'false');
+      this.meetingsClicked = false;
+    }
+  }
+
+  swichToMeetings() {
+    if (!this.meetingsClicked) {
+      document.getElementById('segMeetings').setAttribute('checked', 'true');
+      document.getElementById('segDetails').setAttribute('checked', 'false');
+      this.meetingsClicked = true;
+    }
+  }
+
   ngOnInit() {
+    this.tabInternship = [];
     this.gettingData();
+    this.storage.remove('Internship');
   }
 }

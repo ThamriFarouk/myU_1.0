@@ -11,9 +11,87 @@
 
 
 <ion-content #pageContent padding> 
-    <p padding>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
-    <ion-title>{{internship.getInternshipTerritory()}}</ion-title>
-  <ion-title>{{internship.getInternshipType()}} {{internship.getInternshipNature()}} </ion-title>
-  <h3><ion-label style="font-style: italic">Unité: </ion-label>{{internship.getInternshipUnit()}}</h3>
+  
+  <p padding>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
+  
+  <ion-list *ngFor="let internship of tabInternship; let l = index">
+    
+    <ion-card>
+      <ion-card-header color="medium" style="padding: 16px 16px 0px 16px">
+        <ion-card-subtitle>{{internship.getInternshipTerritory()}}:</ion-card-subtitle>
+        <ion-card-title>
+          {{internship.getInternshipType()}} {{internship.getInternshipNature()}} 
+        </ion-card-title>
+        <ion-card-subtitle>{{internship.getStartDate()}} - {{internship.getEndDate()}}</ion-card-subtitle>
+        <ion-card-subtitle>Unité:  {{internship.getInternshipUnit()}}</ion-card-subtitle>
+        <ion-segment>
+          <ion-segment-button id="segDetails" (click)="swichToDetails()" checked>
+            <ion-label>Détails</ion-label>
+          </ion-segment-button>
+          <ion-segment-button id="segMeetings" (click)="swichToMeetings()">
+            <ion-label>Réunions</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-card-header>
+
+      <ion-card-content *ngIf="!meetingsClicked"> 
+        <br>  
+          <ion-label style="font-style: italic; font-size: 20px; padding-left: 10px">
+            Etudiants: 
+          </ion-label>
+            <br>
+                <ion-list style="padding: 0px 0px 0px 15px" *ngFor="let student of internship.getStudents(); let i = index; ">
+                  <ion-item>
+                    {{student.getFullName()}} 
+                  </ion-item>
+                </ion-list>
+          <ion-label style="font-style: italic; font-size: 20px; padding-left: 10px">
+            Enseignants: 
+          </ion-label>
+            <br>
+                <ion-list style="padding: 0px 0px 0px 15px" *ngFor="let prof of internship.getProfessors(); let j = index">
+                  <ion-item>
+                    {{prof.getFullName()}} 
+                  </ion-item>
+                </ion-list>
+          <ion-label style="font-style: italic; font-size: 20px; padding-left: 10px">
+            Superviseurs: 
+          </ion-label>
+            <br>
+                <ion-list style="padding: 0px 0px 0px 15px" *ngFor="let supervisor of internship.getSupervisor(); let k = index">
+                  <ion-item>
+                    {{supervisor.getFullName()}} 
+                  </ion-item>
+                </ion-list>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="meetingsClicked">
+        <ion-list *ngFor="let meeting of internship.getMeetings(); let m = index;">
+          <ion-label style="font-style: italic; font-size: 20px; padding-left: 10px">
+            Réunion {{m+1}}: 
+          </ion-label>
+          <ion-item>
+            <ion-label>Date:  </ion-label>{{meeting.getStartTime().slice(0,11)}}
+          </ion-item>
+          <ion-item>
+            <ion-label>Time:  </ion-label>{{meeting.getStartTime().slice(11,16)}} - {{meeting.getEndTime().slice(11,16)}}
+          </ion-item>
+          <ion-item>
+            <ion-label>Place:  </ion-label>{{meeting.getPlace()}}
+          </ion-item>
+          <ion-item>
+            <ion-label>Status:  </ion-label>{{meeting.getStatus()}}
+          </ion-item>
+          <ion-label class="description">Description:  </ion-label>
+          <ion-item>
+            <p>{{meeting.getDescription()}}</p>
+          </ion-item>
+          
+        </ion-list>
+      </ion-card-content>
+
+    </ion-card>
+  </ion-list>
 
 </ion-content>
+
