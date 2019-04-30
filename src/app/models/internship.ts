@@ -62,6 +62,7 @@ export class Internship {
         new Teacher(
           undefined,
           undefined,
+          // tslint:disable-next-line:quotemark
           "Pas d'enseignant assigné pour l'instant",
           undefined,
           undefined
@@ -70,17 +71,20 @@ export class Internship {
     }
     if (this.getStudents().length === 0) {
       this.students.push(
+        // tslint:disable-next-line:quotemark
         new Student("Pas d'étudiant assigné pour l'instant", undefined)
       );
     }
     if (this.getSupervisor().length === 0) {
       this.supervisor.push(
+        // tslint:disable-next-line:quotemark
         new Supervisor("Pas de superviseur assigné pour l'instant", undefined)
       );
     }
     if (this.getMeetings().length === 0) {
       this.meetings.push(
         new Meeting(
+          // tslint:disable-next-line:quotemark
           "Pas de réunion fixé pour l'instant",
           '~',
           null,
