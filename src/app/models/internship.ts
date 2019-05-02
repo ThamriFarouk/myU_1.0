@@ -81,7 +81,7 @@ export class Internship {
         new Supervisor("Pas de superviseur assigné pour l'instant", undefined)
       );
     }
-    if (this.getMeetings().length === 0) {
+    if (this.getMeetings().length === 0) { 
       this.meetings.push(
         new Meeting(
           // tslint:disable-next-line:quotemark

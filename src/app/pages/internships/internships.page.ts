@@ -38,7 +38,7 @@ export class InternshipsPage implements OnInit {
     private router: Router
   ) {}
 
-  // API from local
+  // API from local 
   async getstudentInternship() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
