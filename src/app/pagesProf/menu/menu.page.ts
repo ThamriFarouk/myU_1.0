@@ -38,7 +38,7 @@ export class MenuPage implements OnInit {
     },
     {
       title: 'Absences',
-      url: '/prof/etudiant/absences',
+      url: '/prof/absences',
       icon: 'alert'
     },
     // {
