@@ -31,17 +31,16 @@ const themes = {
     light: '#F4EDF2',
     medium: '#B682A5',
     dark: '#34162A'
-  },
+  }
 };
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: [],
+  styleUrls: []
 })
 export class AppComponent {
-
-
+  public user;
 
   constructor(
     private platform: Platform,
@@ -49,21 +48,37 @@ export class AppComponent {
     private statusBar: StatusBar,
     private theme: ThemeService,
     private authService: AuthentificationService,
-    private router: Router,
+    private router: Router
   ) {
     this.initializeApp();
+  }
+
+  switch() {
+    if (this.user === 'student') {
+      this.user = 'student';
+    } else {
+      this.user = 'etudiant';
+    }
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.authService.authenticationState.subscribe((state) => {
+      this.authService.authenticationState.subscribe(state => {
         console.log('Auth changed: ', state);
-        if (state) {
-          this.router.navigate(['etudiant', 'home']);
+        if (this.user === 'student') {
+          if (state) {
+            this.router.navigate(['student', 'home']);
+          } else {
+            this.router.navigate(['login']);
+          }
         } else {
-          this.router.navigate(['login']);
+          if (state) {
+            this.router.navigate(['prof', 'home']);
+          } else {
+            this.router.navigate(['login']);
+          }
         }
       });
     });

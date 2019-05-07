@@ -6,12 +6,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MenuPage } from './menu.page';
-import { ListTeachersPage } from '../list-teachers/list-teachers.page';
 import { ScrollHideModule } from 'src/app/directives/scroll-hide.module';
 
 const routes: Routes = [
   {
-    path: 'etudiant',
+    path: 'student',
     component: MenuPage,
     children: [
       {
@@ -51,6 +50,22 @@ const routes: Routes = [
       {
         path: 'teachers',
         loadChildren: '../teachers/teachers.module#TeachersPageModule'
+      },
+      {
+        path: 'feeds',
+        loadChildren: '../feeds/feeds.module#FeedsPageModule'
+      },
+      {
+        path: 'documents',
+        loadChildren: '../documents/documents.module#DocumentsPageModule'
+      },
+      {
+        path: 'calendars',
+        loadChildren: '../calendars/calendars.module#CalendarsPageModule'
+      },
+      {
+        path: 'galerie',
+        loadChildren: '../galerie/galerie.module#GaleriePageModule'
       }
     ]
   }

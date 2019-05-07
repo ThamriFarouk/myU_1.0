@@ -3,6 +3,7 @@ import { Router, RouterEvent } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { finalize } from 'rxjs/operators';
+import { GetCredentialsService } from 'src/app/services/get-credentials.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginPage implements OnInit {
     private router: Router,
     public navCtrl: NavController,
     private authService: AuthentificationService,
+    private credService: GetCredentialsService,
     private loadingCtrl: LoadingController
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
@@ -27,6 +29,14 @@ export class LoginPage implements OnInit {
   async login() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
+    const login = document.getElementById('userName');
+    const pwd = document.getElementById('password');
+    this.credService
+      .getCredentials(login, pwd)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        console.log(response);
+      });
     this.authService.login();
     loading.dismiss();
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
-import { longStackSupport } from 'q';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoadingController } from '@ionic/angular';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
@@ -23,37 +22,37 @@ export class MenuPage implements OnInit {
   public appGeneralPages = [
     {
       title: 'Home',
-      url: '/etudiant/home',
+      url: '/student/home',
       icon: 'home'
     },
     {
       title: 'Actualité',
-      url: '/Actu',
+      url: '/student/feeds',
       icon: 'paper'
     },
     {
       title: 'Calendriers',
-      url: 'Calendrier',
+      url: '/student/calendars',
       icon: 'calendar'
     },
     {
       title: 'Absences',
-      url: '/etudiant/absences',
+      url: '/student/absences',
       icon: 'alert'
     },
     // {
     //   title: 'Eliminations',
-    //   url: '/etudiant/eliminations',
+    //   url: '/student/eliminations',
     //   icon: 'close-circle'
     // },
     {
       title: 'Documents',
-      url: '/Docs',
+      url: '/student/documents',
       icon: 'document'
     },
     {
       title: 'Galerie',
-      url: '/Galerie',
+      url: '/student/galerie',
       icon: 'images'
     }
   ];
@@ -69,27 +68,27 @@ export class MenuPage implements OnInit {
   public appStudentPages = [
     {
       title: 'Notes',
-      url: '/etudiant/notes',
+      url: '/student/notes',
       icon: 'bookmarks'
     },
     {
       title: 'Résultats',
-      url: '/etudiant/results',
+      url: '/student/results',
       icon: 'school'
     },
     {
       title: 'Stages',
-      url: '/etudiant/internships',
+      url: '/student/internships',
       icon: 'list-box'
     },
     {
       title: 'Enseignants',
-      url: '/etudiant/teachers',
+      url: '/student/teachers',
       icon: 'man'
     },
     {
       title: 'Parametres',
-      url: '/etudiant/parametres',
+      url: '/student/parametres',
       icon: 'construct'
     }
   ];
