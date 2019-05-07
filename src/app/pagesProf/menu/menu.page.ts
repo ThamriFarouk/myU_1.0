@@ -22,6 +22,32 @@ export class MenuPage implements OnInit {
 
   public appGeneralPages = [
     {
+      title: 'Documents',
+      url: '/prof/documents',
+      icon: 'document'
+    },
+    {
+      title: 'Galerie',
+      url: '/prof/galerie',
+      icon: 'images'
+    },
+    {
+      title: 'Parametres',
+      url: '/prof/parametres',
+      icon: 'construct'
+    }
+  ];
+
+  public appBottomPages = [
+    {
+      title: 'Déconnexion',
+      url: '/login',
+      icon: 'log-out'
+    }
+  ];
+
+  public appTeacherPages = [
+    {
       title: 'Home',
       url: '/prof/home',
       icon: 'home'
@@ -37,64 +63,26 @@ export class MenuPage implements OnInit {
       icon: 'calendar'
     },
     {
-      title: 'Absences',
-      url: '/prof/absences',
-      icon: 'alert'
-    },
-    // {
-    //   title: 'Eliminations',
-    //   url: '/etudiant/eliminations',
-    //   icon: 'close-circle'
-    // },
-    {
-      title: 'Documents',
-      url: '/prof/documents',
-      icon: 'document'
+      title: 'Honoraire',
+      url: '/prof/fees',
+      icon: 'log-out'
     },
     {
-      title: 'Galerie',
-      url: '/prof/galerie',
-      icon: 'images'
-    }
-  ];
-
-  public appBottomPages = [
+      title: 'Etudiants',
+      url: '/prof/students',
+      icon: 'log-out'
+    },
     {
-      title: 'Déconnexion',
-      url: '/login',
+      title: 'Evaluations',
+      url: '/prof/evaluations',
+      icon: 'log-out'
+    },
+    {
+      title: 'stages',
+      url: '/prof/internships',
       icon: 'log-out'
     }
   ];
-
-  public appStudentPages = [
-    {
-      title: 'Notes',
-      url: '/prof/notes',
-      icon: 'bookmarks'
-    },
-    {
-      title: 'Résultats',
-      url: '/prof/results',
-      icon: 'school'
-    },
-    {
-      title: 'Stages',
-      url: '/prof/internships',
-      icon: 'list-box'
-    },
-    {
-      title: 'Enseignants',
-      url: '/prof/teachers',
-      icon: 'man'
-    },
-    {
-      title: 'Parametres',
-      url: '/prof/parametres',
-      icon: 'construct'
-    }
-  ];
-
-  public appTeacherPages = [];
 
   selectedPath = '';
 
@@ -106,6 +94,10 @@ export class MenuPage implements OnInit {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
     });
+  }
+
+  goProfile() {
+    this.router.navigate(['/prof/profile']);
   }
 
   async logout() {

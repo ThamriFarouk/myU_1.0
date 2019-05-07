@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CalendarsPage } from './calendars.page';
+import { ScrollHideModule } from 'src/app/directives/scroll-hide.module';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ScrollHideModule,
     RouterModule.forChild(routes)
   ],
   declarations: [CalendarsPage]

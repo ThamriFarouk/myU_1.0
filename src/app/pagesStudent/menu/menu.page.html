@@ -16,7 +16,7 @@
               <img src="https://wwwfr.uni.lu/var/storage/images/media/images/ubourgogne_logo/1088961-1-fre-FR/ubourgogne_logo.jpg">
             </div> -->
 
-          <ion-card color="medium">
+          <ion-card color="medium" [routerDirection]="'root'" [routerLink]="['profile']">
               <ion-card-header>
                 <!-- <ion-img src="/assets/shapes.svg"></ion-img> -->
                   <ion-grid>
@@ -37,18 +37,7 @@
          
           
           <ion-menu-toggle auto-hide="false" >
-            <ion-list>
-                <ion-title>Général</ion-title>
-              <ion-item-group *ngFor="let p of appGeneralPages">
-                <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-                    <ion-icon slot="start" [name]="p.icon"></ion-icon>
-                    <ion-label>
-                      {{p.title}}
-                    </ion-label>
-                  </ion-item>
-            </ion-item-group> 
-          </ion-list>           
-          
+             
           <ion-list>
             <ion-title>Services</ion-title>
             <ion-item-group *ngFor="let p of appStudentPages">
@@ -60,8 +49,19 @@
               </ion-item>
             </ion-item-group>
           </ion-list>
-                
 
+          <ion-list>
+                <ion-title>Général</ion-title>
+              <ion-item-group *ngFor="let p of appGeneralPages">
+                <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                    <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                    <ion-label>
+                      {{p.title}}
+                    </ion-label>
+                  </ion-item>
+            </ion-item-group> 
+          </ion-list>          
+                
           </ion-menu-toggle>
 
       </ion-content>

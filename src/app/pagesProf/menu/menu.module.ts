@@ -15,68 +15,63 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: '../home/home.module#HomePageModule'
+        loadChildren: 'src/app/pagesProf/home/home.module#HomePageModule'
+      },
+      {
+        path: 'profile',
+        loadChildren:
+          'src/app/pagesProf/profile/profile.module#ProfilePageModule'
       },
       {
         path: 'parametres',
-        loadChildren: '../parametres/parametres.module#ParametresPageModule'
-      },
-      {
-        path: 'teacherDetails/:id/:name',
         loadChildren:
-          '../list-teachers/teacher-details/teacher-details.module#TeacherDetailsPageModule'
+          'src/app/parametres/parametres.module#ParametresPageModule'
       },
       {
-        path: 'absences',
-        loadChildren: '../absences/absences.module#AbsencesPageModule'
-      },
-      {
-        path: 'notes',
-        loadChildren: '../notes/notes.module#NotesPageModule'
-      },
-      {
-        path: 'results',
-        loadChildren: '../results/results.module#ResultsPageModule'
+        path: 'fees',
+        loadChildren: 'src/app/pagesProf/fees/fees.module#FeesPageModule'
       },
       {
         path: 'internships',
-        loadChildren: '../internships/internships.module#InternshipsPageModule'
+        loadChildren:
+          'src/app/pagesProf/internships/internships.module#InternshipsPageModule'
       },
       {
         path: 'internship-details/:id',
         loadChildren:
-          '../internship-details/internship-details.module#InternshipDetailsPageModule'
-      },
-      {
-        path: 'teachers',
-        loadChildren: '../teachers/teachers.module#TeachersPageModule'
+          'src/app/pagesProf/internship-details/internship-details.module#InternshipDetailsPageModule'
       },
       {
         path: 'feeds',
-        loadChildren: '../feeds/feeds.module#FeedsPageModule'
+        loadChildren: 'src/app/pagesProf/feeds/feeds.module#FeedsPageModule'
+      },
+      {
+        path: 'evaluations',
+        loadChildren:
+          'src/app/pagesProf/evaluations/evaluations.module#EvaluationsPageModule'
+      },
+      {
+        path: 'students',
+        loadChildren:
+          'src/app/pagesProf/students/students.module#StudentsPageModule'
       },
       {
         path: 'documents',
-        loadChildren: '../documents/documents.module#DocumentsPageModule'
+        loadChildren:
+          'src/app/pagesProf/documents/documents.module#DocumentsPageModule'
       },
       {
         path: 'calendars',
-        loadChildren: '../calendars/calendars.module#CalendarsPageModule'
+        loadChildren:
+          'src/app/pagesProf/calendars/calendars.module#CalendarsPageModule'
       },
       {
         path: 'galerie',
-        loadChildren: '../galerie/galerie.module#GaleriePageModule'
+        loadChildren:
+          'src/app/pagesProf/galerie/galerie.module#GaleriePageModule'
       }
     ]
   }
-  // {
-  //   path: 'login',
-  //   loadChildren: '../login/login.module#LoginPageModule'
-  // },
-  // {
-  //   path: '',
-  //   redirectTo: '/etudiant/home'
-  // }
 ];
 
 @NgModule({

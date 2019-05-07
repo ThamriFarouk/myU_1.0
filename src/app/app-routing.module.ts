@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: './pagesProf/login/login.module#LoginPageModule'
+    loadChildren: './login/login.module#LoginPageModule'
   },
   {
     path: 'test',

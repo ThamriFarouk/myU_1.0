@@ -21,6 +21,32 @@ export class MenuPage implements OnInit {
 
   public appGeneralPages = [
     {
+      title: 'Documents',
+      url: '/student/documents',
+      icon: 'document'
+    },
+    {
+      title: 'Galerie',
+      url: '/student/galerie',
+      icon: 'images'
+    },
+    {
+      title: 'Parametres',
+      url: '/student/parametres',
+      icon: 'construct'
+    }
+  ];
+
+  public appBottomPages = [
+    {
+      title: 'Déconnexion',
+      url: '/login',
+      icon: 'log-out'
+    }
+  ];
+
+  public appStudentPages = [
+    {
       title: 'Home',
       url: '/student/home',
       icon: 'home'
@@ -40,32 +66,6 @@ export class MenuPage implements OnInit {
       url: '/student/absences',
       icon: 'alert'
     },
-    // {
-    //   title: 'Eliminations',
-    //   url: '/student/eliminations',
-    //   icon: 'close-circle'
-    // },
-    {
-      title: 'Documents',
-      url: '/student/documents',
-      icon: 'document'
-    },
-    {
-      title: 'Galerie',
-      url: '/student/galerie',
-      icon: 'images'
-    }
-  ];
-
-  public appBottomPages = [
-    {
-      title: 'Déconnexion',
-      url: '/login',
-      icon: 'log-out'
-    }
-  ];
-
-  public appStudentPages = [
     {
       title: 'Notes',
       url: '/student/notes',
@@ -85,11 +85,6 @@ export class MenuPage implements OnInit {
       title: 'Enseignants',
       url: '/student/teachers',
       icon: 'man'
-    },
-    {
-      title: 'Parametres',
-      url: '/student/parametres',
-      icon: 'construct'
     }
   ];
 
@@ -105,6 +100,10 @@ export class MenuPage implements OnInit {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
     });
+  }
+
+  goProfile() {
+    this.router.navigate(['/student/profile']);
   }
 
   async logout() {

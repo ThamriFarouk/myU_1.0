@@ -5,12 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ParametresPage } from './parametres.page';
+import { StudentsPage } from './students.page';
+import { ScrollHideModule } from 'src/app/directives/scroll-hide.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: ParametresPage
+    component: StudentsPage
   }
 ];
 
@@ -19,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ScrollHideModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ParametresPage]
+  declarations: [StudentsPage]
 })
-export class ParametresPageModule {}
+export class StudentsPageModule {}

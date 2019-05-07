@@ -18,8 +18,14 @@ const routes: Routes = [
         loadChildren: '../home/home.module#HomePageModule'
       },
       {
+        path: 'profile',
+        loadChildren:
+          'src/app/pagesStudent/profile/profile.module#ProfilePageModule'
+      },
+      {
         path: 'parametres',
-        loadChildren: '../parametres/parametres.module#ParametresPageModule'
+        loadChildren:
+          'src/app/parametres/parametres.module#ParametresPageModule'
       },
       {
         path: 'teacherDetails/:id/:name',
