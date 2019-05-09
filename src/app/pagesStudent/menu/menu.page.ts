@@ -3,6 +3,8 @@ import { Router, RouterEvent } from '@angular/router';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoadingController } from '@ionic/angular';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { GetProfileService } from 'src/app/services/get-profile.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-menu',
@@ -91,11 +93,14 @@ export class MenuPage implements OnInit {
   public appTeacherPages = [];
 
   selectedPath = '';
+  public profile;
 
   constructor(
     private router: Router,
     private authService: AuthentificationService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private profileService: GetProfileService,
+    private storage: Storage
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
@@ -113,5 +118,33 @@ export class MenuPage implements OnInit {
     loading.dismiss();
   }
 
-  ngOnInit() {}
+  getProfile() {
+    this.storage.get('userId').then(res => {
+      const UID = res;
+      console.log(UID);
+      this.storage.get('userType').then(userType => {
+        const UT = userType;
+        console.log(UT);
+        if (UT === 'student') {
+          this.profileService.getStudentProfile(UID).subscribe(result => {
+            this.profile = result;
+            this.profile = this.profile.student;
+            console.log(this.profile);
+            this.storage.set('studentId', this.profile._id);
+          });
+        }
+        if (UT === 'prof') {
+          this.profileService.getStudentProfile(UID).subscribe(result => {
+            this.profile = result;
+            this.profile = this.profile.student;
+            this.storage.set('profId', this.profile._id);
+          });
+        }
+      });
+    });
+  }
+
+  ngOnInit() {
+    this.getProfile();
+  }
 }

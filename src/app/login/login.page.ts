@@ -5,6 +5,7 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 import { finalize } from 'rxjs/operators';
 import { GetCredentialsService } from 'src/app/services/get-credentials.service';
 import { AppComponent } from 'src/app/app.component';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginPage implements OnInit {
     private authService: AuthentificationService,
     private credService: GetCredentialsService,
     private loadingCtrl: LoadingController,
+    private storage: Storage,
     private appComp: AppComponent
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
@@ -44,7 +46,8 @@ export class LoginPage implements OnInit {
         console.log(user);
         this.userConnected = user;
         console.log(this.userConnected);
-        this.appComp.user = this.userConnected.type;
+        this.appComp.userType = this.userConnected.type;
+        this.storage.set('userId', this.userConnected.user_id);
         this.authService.login();
       });
     loading.dismiss();

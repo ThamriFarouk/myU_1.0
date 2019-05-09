@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ThemeService } from '../app/services/theme.service';
 import { AuthentificationService } from './services/authentification.service';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 const themes = {
   autumn: {
@@ -39,7 +40,7 @@ const themes = {
   styleUrls: []
 })
 export class AppComponent {
-  public user;
+  public userType;
 
   constructor(
     private platform: Platform,
@@ -47,16 +48,17 @@ export class AppComponent {
     private statusBar: StatusBar,
     private theme: ThemeService,
     private authService: AuthentificationService,
-    private router: Router
+    private router: Router,
+    private storage: Storage
   ) {
     this.initializeApp();
   }
 
   switch() {
-    if (this.user === 'student') {
-      this.user = 'student';
+    if (this.userType === 'student') {
+      this.userType = 'student';
     } else {
-      this.user = 'etudiant';
+      this.userType = 'etudiant';
     }
   }
 
@@ -66,13 +68,15 @@ export class AppComponent {
       this.splashScreen.hide();
       this.authService.authenticationState.subscribe(state => {
         console.log('Auth changed: ', state);
-        if (this.user === 'student') {
+        if (this.userType === 'student') {
+          this.storage.set('userType', this.userType);
           if (state) {
             this.router.navigate(['student', 'home']);
           } else {
             this.router.navigate(['login']);
           }
         } else {
+          this.storage.set('userType', this.userType);
           if (state) {
             this.router.navigate(['prof', 'home']);
           } else {

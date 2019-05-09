@@ -1,0 +1,36 @@
+[
+    {
+        "title": "Bourse d'étude en Italie",
+        "subtitle": "",
+        "categorie": "Bourse d'étude",
+        "content": "",
+        "publisher": "Administration",
+        "date": "27/04/2019",
+        "time": "",
+        "photo": "",
+        "school": "EPS",
+        "department": "CHIMIE"
+    },
+    {
+        "title": "Partenariat professionel avec Google",
+        "subtitle": "",
+        "categorie": "Partenariat",
+        "content": "",
+        "publisher": "Administration",
+        "date": "30/04/2019", 
+        "photo": "",
+        "school": "EPS",
+        "department": "PHYSIQUE"
+    },
+    {
+        "title": "Partenariat professionel avec Google",
+        "subtitle": "",
+        "categorie": "Partenariat",
+        "content": "",
+        "publisher": "Administration",
+        "date": "30/04/2019",
+        "photo": "",
+        "school": "EPT",
+        "department": "ART"
+    }
+]

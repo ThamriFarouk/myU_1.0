@@ -5,6 +5,7 @@ import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { StudentResults } from 'src/app/models/studentResults';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-results',
@@ -15,6 +16,7 @@ export class ResultsPage implements OnInit {
   public Res: any[] = [];
   public tabResults: StudentResults[] = [];
   public collapseCard: boolean[] = [true, true];
+  public X: any[] = [];
 
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
@@ -24,7 +26,8 @@ export class ResultsPage implements OnInit {
   constructor(
     public studentRes: GetStudentResultsService,
     private loadingCtrl: LoadingController,
-    private nativeHttp: HTTP
+    private nativeHttp: HTTP,
+    private storage: Storage
   ) {}
 
   // API from local
@@ -54,7 +57,8 @@ export class ResultsPage implements OnInit {
       .getStudentResults(id)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
-        this.Res.push(response);
+        this.X.push(response);
+        this.Res.push(this.X[0].studentResults);
         this.reorginizeResponse();
         for (let i = 0; i < this.tabResults.length; i++) {
           this.tabResults[i].test();
@@ -89,7 +93,10 @@ export class ResultsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getstudentResult();
-    // this.getstudentResults(4590);
+    // this.getstudentResult();
+    this.storage.get('studentId').then(res => {
+      const id = res;
+      this.getstudentResults(id);
+    });
   }
 }
