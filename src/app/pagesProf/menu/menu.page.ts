@@ -4,6 +4,7 @@ import { longStackSupport } from 'q';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoadingController } from '@ionic/angular';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-menu',
@@ -89,7 +90,8 @@ export class MenuPage implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthentificationService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private storage: Storage
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
@@ -104,6 +106,7 @@ export class MenuPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     this.authService.logout();
+    this.storage.set('userType', null);
     loading.dismiss();
   }
 
