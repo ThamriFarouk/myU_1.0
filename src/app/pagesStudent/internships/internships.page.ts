@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { GetStudentInternshipsService } from 'src/app/services/get-student-internships.service';
-import { Internship } from 'src/app/models/internship';
-import { Teacher } from 'src/app/models/teacher';
-import { Meeting } from 'src/app/models/meeting';
-import { Student } from 'src/app/models/student';
-import { Supervisor } from 'src/app/models/supervisor';
+import { Internship } from 'src/app/models/studentModels/internship/internship';
+import { Teacher } from 'src/app/models/commonModels/teacher';
+import { Meeting } from 'src/app/models/studentModels/internship/meeting';
+import { Student } from 'src/app/models/commonModels/student';
+import { Supervisor } from 'src/app/models/studentModels/internship/supervisor';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
@@ -38,7 +38,7 @@ export class InternshipsPage implements OnInit {
     private router: Router
   ) {}
 
-  // API from local 
+  // API from local
   async getstudentInternship() {
     const loading = await this.loadingCtrl.create();
     await loading.present();
@@ -67,7 +67,7 @@ export class InternshipsPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     this.studentIS
-      .getStudentInternships(id, internshipID)
+      .getStudentInternships(id)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
         this.Res.push(response);
@@ -95,6 +95,13 @@ export class InternshipsPage implements OnInit {
           null,
           this.Res[0][i].professors[j].fullName,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         )
       );
@@ -107,7 +114,14 @@ export class InternshipsPage implements OnInit {
       this.tabStudents.push(
         new Student(
           this.Res[0][i].students[j].fullName,
-          this.Res[0][i].students[j].id
+          this.Res[0][i].students[j].id,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         )
       );
     }
@@ -119,7 +133,14 @@ export class InternshipsPage implements OnInit {
       this.tabSupervisors.push(
         new Supervisor(
           this.Res[0][i].supervisors[j].fullName,
-          this.Res[0][i].supervisors[j].id
+          this.Res[0][i].supervisors[j].id,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
         )
       );
     }

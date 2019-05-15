@@ -41,6 +41,7 @@ const themes = {
 })
 export class AppComponent {
   public userType;
+  public UT: String;
 
   constructor(
     private platform: Platform,
@@ -64,25 +65,52 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.storage.keys().then(keys => {
+        console.log(keys);
+      });
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.authService.authenticationState.subscribe(state => {
         console.log('Auth changed: ', state);
-        if (this.userType === 'student') {
-          this.storage.set('userType', this.userType);
-          if (state) {
-            this.router.navigate(['student', 'home']);
+        this.storage.get('userType').then(userTy => {
+          this.UT = userTy;
+          console.log(this.UT);
+          if (this.UT === 'student') {
+            console.log('if student');
+            if (state) {
+              console.log('navigate /student/home');
+              this.router.navigate(['student', 'absences']);
+              console.log('yihaa');
+            } else {
+              console.log('navigate /login');
+              this.router.navigate(['login']);
+            }
+          }
+          if (this.UT === 'prof') {
+            console.log('if prof');
+            if (state) {
+              console.log('navigate /prof/home');
+              this.router.navigate(['prof', 'home']);
+            } else {
+              console.log('navigate /login');
+              this.router.navigate(['login']);
+            }
           } else {
             this.router.navigate(['login']);
           }
-        } else {
-          this.storage.set('userType', this.userType);
-          if (state) {
-            this.router.navigate(['prof', 'home']);
-          } else {
-            this.router.navigate(['login']);
-          }
-        }
+        });
+        // else {
+        //   this.storage.get('userType').then(userT => {
+        //     this.UT = userT;
+        //     if ((this.UT = 'student')) {
+        //       this.router.navigate(['student', 'home']);
+        //     } else if ((this.UT = 'prof')) {
+        //       this.router.navigate(['prof', 'home']);
+        //     } else {
+        //       this.router.navigate(['login']);
+        //     }
+        // });
+        // }
       });
     });
   }

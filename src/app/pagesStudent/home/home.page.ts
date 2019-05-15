@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 import { AppComponent } from 'src/app/app.component';
 import { Router } from '@angular/router';
@@ -8,15 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage {
+export class HomePage implements OnInit {
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
     maxValue: 60
   };
   constructor(public appComp: AppComponent, public router: Router) {}
 
-  navigateToTest() {
-    this.appComp.switch();
-    this.router.navigate(['test']);
-  }
+  // navigateToTest() {
+  //   this.appComp.switch();
+  //   this.router.navigate(['test']);
+  // }
+
+  ngOnInit() {}
 }

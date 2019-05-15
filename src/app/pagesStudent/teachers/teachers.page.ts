@@ -3,9 +3,9 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
 import { TeacherListService } from 'src/app/services/teacher-list.service';
 import { finalize } from 'rxjs/operators';
-import { TeacherByClasse } from 'src/app/models/teacherByClasse';
-import { Teacher } from 'src/app/models/teacher';
-import { TeacherByCourse } from 'src/app/models/teacherByCourse';
+import { TeacherByClasse } from 'src/app/models/studentModels/teacher/teacherByClasse';
+import { Teacher } from 'src/app/models/commonModels/teacher';
+import { TeacherByCourse } from 'src/app/models/studentModels/teacher/teacherByCourse';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({
@@ -55,7 +55,14 @@ export class TeachersPage implements OnInit {
               element.professorClassId,
               element.professorFullName,
               element.evaluated,
-              element.courseName
+              element.courseName,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
             )
           );
         });
@@ -92,7 +99,14 @@ export class TeachersPage implements OnInit {
               element.professorClassId,
               element.professorFullName,
               element.evaluated,
-              element.courseName
+              element.courseName,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
             )
           );
         });

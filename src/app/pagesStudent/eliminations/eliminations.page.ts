@@ -3,10 +3,11 @@ import { GetStudentAttendanceService } from 'src/app/services/get-student-attend
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { Attendance } from 'src/app/models/attendance';
-import { Seance } from 'src/app/models/seance';
-import { Eliminations } from 'src/app/models/eliminations';
+import { Attendance } from 'src/app/models/studentModels/attendance/attendance';
+import { Seance } from 'src/app/models/commonModels/seance';
+import { Eliminations } from 'src/app/models/studentModels/attendance/eliminations';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-eliminations',
@@ -33,7 +34,8 @@ export class EliminationsPage implements OnInit {
   constructor(
     private studentAttend: GetStudentAttendanceService,
     private router: Router,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private storage: Storage
   ) {}
 
   // API from local
@@ -152,7 +154,10 @@ export class EliminationsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getstudentAttendance();
-    // this.getstudentAttendances(4590);
+    this.storage.get('studentId').then(res => {
+      const id = res;
+      this.getstudentAttendances(id);
+      // this.getstudentAttendance();
+    });
   }
 }

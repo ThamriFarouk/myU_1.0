@@ -1,12 +1,35 @@
-import { Person } from './person';
+import { Person } from 'src/app/models/commonModels/person';
 
 export class Teacher extends Person {
-  private classId: number;
+  private classId: String;
   private evaluation: String;
   private course: String;
 
-  constructor(id, classId, fullName, evaluation, course) {
-    super(fullName, id);
+  constructor(
+    id,
+    classId,
+    fullName,
+    evaluation,
+    course,
+    birthPlace,
+    birthDate,
+    Nationality,
+    CIN,
+    PassportNumber,
+    SchoolName,
+    DepartmentName
+  ) {
+    super(
+      fullName,
+      id,
+      birthPlace,
+      birthDate,
+      Nationality,
+      CIN,
+      PassportNumber,
+      SchoolName,
+      DepartmentName
+    );
     this.classId = classId;
     this.evaluation = evaluation;
     this.course = course;
@@ -28,11 +51,11 @@ export class Teacher extends Person {
     super.setFullName(value);
   }
 
-  public getClassId(): number {
+  public getClassId(): String {
     return this.classId;
   }
 
-  public setClassId(value: number) {
+  public setClassId(value: String) {
     this.classId = value;
   }
 

@@ -3,7 +3,7 @@ import { GetStudentResultsService } from 'src/app/services/get-student-results.s
 import { HTTP } from '@ionic-native/http/ngx';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { StudentResults } from 'src/app/models/studentResults';
+import { StudentResults } from 'src/app/models/studentModels/course/studentResults';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 import { Storage } from '@ionic/storage';
 

@@ -3,9 +3,9 @@ import { GetStudentEvaluationService } from 'src/app/services/get-student-evalua
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { Unit } from 'src/app/models/Unit';
-import { Course } from 'src/app/models/Course';
-import { Evaluation } from 'src/app/models/evaluation';
+import { Unit } from 'src/app/models/studentModels/course/Unit';
+import { Course } from 'src/app/models/studentModels/course/course';
+import { Evaluation } from 'src/app/models/studentModels/course/evaluation';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 
 @Component({

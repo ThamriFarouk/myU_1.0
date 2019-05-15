@@ -1,34 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const localURL = 'assets/JSON_files/studentEval';
 
+const server_IP_port = 'http://localhost:4000/';
+const URL = server_IP_port + 'studentEvals/byStudent/';
 
-const localURL = 'assets/JSON_files/studentEval.json';
-
-const credentials = 'dGVzdDp0ZXN0';
-
-const  entete = new HttpHeaders({'Authorization': 'Basic ' + 'dGVzdDp0ZXN0'});
-// entete.append('Content-Type', 'application/json;charset = utf-8');
-// entete.append('Accept', 'application/json');
-// entete.append('cache-control', 'no-cache');
-// entete.append('Authorization', 'Basic dGVzdDp0ZXN0');
-
-const server_IP_port = 'http://192.168.1.20:8080';
-const URL = server_IP_port + '/sge/api/rest/eval/';
+const myHeaders = new HttpHeaders();
+myHeaders.set('Content-Type', 'application/json');
+myHeaders.set('Access-Control-Allow-Origin', '*');
+myHeaders.set(
+  'Access-Control-Allow-Headers',
+  'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+);
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetStudentEvaluationService {
-
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {}
 
   getStudentEvaluation() {
-      return this.http.get(localURL);
-   }
+    return this.http.get(localURL);
+  }
 
-   getStudentEvaluations(id) {
-    return this.http.get(URL + id , { headers: entete}
-      );
-   }
+  getStudentEvaluations(id) {
+    return this.http.get(URL + id, { headers: myHeaders });
+  }
 }

@@ -15,6 +15,7 @@ import { Storage } from '@ionic/storage';
 export class LoginPage implements OnInit {
   selectedPath = '';
   private userConnected;
+  private a;
 
   constructor(
     private router: Router,
@@ -43,14 +44,19 @@ export class LoginPage implements OnInit {
       .getCredentials(login, pwd)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(user => {
-        console.log(user);
         this.userConnected = user;
         console.log(this.userConnected);
         this.appComp.userType = this.userConnected.type;
+        this.storage.set('userType', this.userConnected.type);
         this.storage.set('userId', this.userConnected.user_id);
+        console.log(this.userConnected.type);
         this.authService.login();
       });
     loading.dismiss();
+    this.storage.get('userType').then(UT => {
+      this.a = UT;
+      console.log(this.a);
+    });
   }
 
   ngOnInit() {}

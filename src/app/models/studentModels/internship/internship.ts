@@ -1,7 +1,7 @@
 import { Meeting } from './meeting';
 import { Supervisor } from './supervisor';
-import { Teacher } from './teacher';
-import { Student } from './student';
+import { Teacher } from 'src/app/models/commonModels/teacher';
+import { Student } from 'src/app/models/commonModels/student';
 
 export class Internship {
   private id: number;
@@ -65,23 +65,50 @@ export class Internship {
           // tslint:disable-next-line:quotemark
           "Pas d'enseignant assigné pour l'instant",
           undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
           undefined
         )
       );
     }
     if (this.getStudents().length === 0) {
       this.students.push(
-        // tslint:disable-next-line:quotemark
-        new Student("Pas d'étudiant assigné pour l'instant", undefined)
+        new Student(
+          // tslint:disable-next-line:quotemark
+          "Pas d'étudiant assigné pour l'instant",
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined
+        )
       );
     }
     if (this.getSupervisor().length === 0) {
       this.supervisor.push(
-        // tslint:disable-next-line:quotemark
-        new Supervisor("Pas de superviseur assigné pour l'instant", undefined)
+        new Supervisor(
+          // tslint:disable-next-line:quotemark
+          "Pas de superviseur assigné pour l'instant",
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined
+        )
       );
     }
-    if (this.getMeetings().length === 0) { 
+    if (this.getMeetings().length === 0) {
       this.meetings.push(
         new Meeting(
           // tslint:disable-next-line:quotemark

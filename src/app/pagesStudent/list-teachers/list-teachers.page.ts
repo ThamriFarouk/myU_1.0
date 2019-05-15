@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Teacher } from 'src/app/models/teacher';
+import { Teacher } from 'src/app/models/commonModels/teacher';
 import { Router, RouterEvent } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { TeacherDataService } from 'src/app/services/teacher-data.service';

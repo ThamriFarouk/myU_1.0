@@ -1,4 +1,4 @@
-import { Teacher } from './teacher';
+import { Teacher } from 'src/app/models/commonModels/teacher';
 
 export class TeacherByClasse {
   private classId: number;

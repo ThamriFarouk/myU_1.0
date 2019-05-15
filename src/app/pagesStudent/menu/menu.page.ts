@@ -115,7 +115,7 @@ export class MenuPage implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     this.authService.logout();
-    this.storage.set('userType', null);
+    this.storage.set('userType', 'null');
     loading.dismiss();
   }
 

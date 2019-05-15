@@ -3,10 +3,11 @@ import { GetStudentAttendanceService } from 'src/app/services/get-student-attend
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { Attendance } from 'src/app/models/attendance';
-import { Seance } from 'src/app/models/seance';
-import { Eliminations } from 'src/app/models/eliminations';
+import { Attendance } from 'src/app/models/studentModels/attendance/attendance';
+import { Seance } from 'src/app/models/commonModels/seance';
+import { Eliminations } from 'src/app/models/studentModels/attendance/eliminations';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-absences',
@@ -24,6 +25,7 @@ export class AbsencesPage implements OnInit {
   public eliminationclicked = false;
   public numberAbsence = 0;
   public tabEliminations: Eliminations[];
+  public X: any[] = [];
 
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
@@ -33,7 +35,8 @@ export class AbsencesPage implements OnInit {
   constructor(
     private studentAttend: GetStudentAttendanceService,
     private router: Router,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private storage: Storage
   ) {}
 
   // API from local
@@ -58,7 +61,9 @@ export class AbsencesPage implements OnInit {
       .getStudentAttendances(id)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
-        this.Res.push(response);
+        this.X.push(response);
+        this.Res.push(this.X[0].studentAttendances[0]);
+        console.log(this.Res);
         this.reorginizeResponse();
         this.Seances = this.Attendance.getSeances();
       });
@@ -66,6 +71,7 @@ export class AbsencesPage implements OnInit {
 
   // puts json object response into organized arrays
   reorginizeResponse() {
+    console.log(this.Res[0]);
     this.Res[0].nbAbsencesByCourse.forEach(element => {
       this.Res[0].seances.forEach(elem => {
         if (element.course === elem.course) {
@@ -118,7 +124,10 @@ export class AbsencesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getstudentAttendance();
-    // this.getstudentAttendances(4590);
+    this.storage.get('studentId').then(res => {
+      const id = res;
+      this.getstudentAttendances(id);
+    });
+    // this.getstudentAttendance();
   }
 }

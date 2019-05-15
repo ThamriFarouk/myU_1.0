@@ -57,8 +57,7 @@ const routes: Routes = [
       },
       {
         path: 'documents',
-        loadChildren:
-          'src/app/pagesProf/documents/documents.module#DocumentsPageModule'
+        loadChildren: 'src/app/documents/documents.module#DocumentsPageModule'
       },
       {
         path: 'calendars',
@@ -67,8 +66,7 @@ const routes: Routes = [
       },
       {
         path: 'galerie',
-        loadChildren:
-          'src/app/pagesProf/galerie/galerie.module#GaleriePageModule'
+        loadChildren: 'src/app/galerie/galerie.module#GaleriePageModule'
       }
     ]
   }

@@ -3,18 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 
 const localURL = 'assets/JSON_files/studentInternships.json';
+const server_IP_port = 'http://localhost:4000/';
+const URL = server_IP_port + 'studentInternships/byStudent/';
 
-const credentials = 'dGVzdDp0ZXN0'; // test:test
-
-const entete = new HttpHeaders({ Authorization: 'Basic ' + 'dGVzdDp0ZXN0' });
-entete.append('Content-Type', 'application/json;charset = utf-8');
-entete.append('Accept', 'application/json');
-entete.append('cache-control', 'no-cache');
-// entete.append('Authorization', 'Basic dGVzdDp0ZXN0');
-
-const server_IP_port = 'http://192.168.1.20:8080';
-const URL = server_IP_port + '/sge/api/rest/internshipByStudent/';
-
+const myHeaders = new HttpHeaders();
+myHeaders.set('Content-Type', 'application/json');
+myHeaders.set('Access-Control-Allow-Origin', '*');
+myHeaders.set(
+  'Access-Control-Allow-Headers',
+  'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+);
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +23,7 @@ export class GetStudentInternshipsService {
     return this.http.get(localURL);
   }
 
-  getStudentInternships(id, InternshipID) {
-    return this.http.get(URL + id + '/' + InternshipID, { headers: entete });
+  getStudentInternships(id) {
+    return this.http.get(URL + id, { headers: myHeaders });
   }
 }

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
-import { Internship } from 'src/app/models/internship';
+import { Internship } from 'src/app/models/studentModels/internship/internship';
 import { Storage } from '@ionic/storage';
-import { Meeting } from 'src/app/models/meeting';
-import { Student } from 'src/app/models/student';
-import { Supervisor } from 'src/app/models/supervisor';
-import { Teacher } from 'src/app/models/teacher';
+import { Meeting } from 'src/app/models/studentModels/internship/meeting';
+import { Student } from 'src/app/models/commonModels/student';
+import { Supervisor } from 'src/app/models/studentModels/internship/supervisor';
+import { Teacher } from 'src/app/models/commonModels/teacher';
 
 @Component({
   selector: 'app-internship-details',
@@ -86,7 +86,17 @@ export class InternshipDetailsPage implements OnInit {
   formatStudents(tab) {
     for (let i = 0; i < tab.students.length; i++) {
       this.students.push(
-        new Student(tab.students[i].fullName, tab.students[i].id)
+        new Student(
+          tab.students[i].fullName,
+          tab.students[i].id,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined
+        )
       );
     }
   }
@@ -94,7 +104,17 @@ export class InternshipDetailsPage implements OnInit {
   formatSupervisors(tab) {
     for (let i = 0; i < tab.supervisor.length; i++) {
       this.supervisors.push(
-        new Supervisor(tab.supervisor[i].fullName, tab.supervisor[i].id)
+        new Supervisor(
+          tab.supervisor[i].fullName,
+          tab.supervisor[i].id,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined
+        )
       );
     }
   }
@@ -106,6 +126,13 @@ export class InternshipDetailsPage implements OnInit {
           tab.professors[i].id,
           null,
           tab.professors[i].fullName,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         )

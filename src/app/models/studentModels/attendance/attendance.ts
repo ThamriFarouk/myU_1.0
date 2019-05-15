@@ -1,4 +1,4 @@
-import { Seance } from './seance';
+import { Seance } from '../../commonModels/seance';
 
 export class Attendance {
   private nbAbsence: number;
