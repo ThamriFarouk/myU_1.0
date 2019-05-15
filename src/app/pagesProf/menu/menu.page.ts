@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
-import { longStackSupport } from 'q';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LoadingController } from '@ionic/angular';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';

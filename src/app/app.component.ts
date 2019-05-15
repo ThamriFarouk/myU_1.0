@@ -75,22 +75,21 @@ export class AppComponent {
         this.storage.get('userType').then(userTy => {
           this.UT = userTy;
           console.log(this.UT);
-          if (this.UT === 'student') {
-            console.log('if student');
-            if (state) {
-              console.log('navigate /student/home');
-              this.router.navigate(['student', 'absences']);
-              console.log('yihaa');
-            } else {
-              console.log('navigate /login');
-              this.router.navigate(['login']);
-            }
-          }
           if (this.UT === 'prof') {
             console.log('if prof');
             if (state) {
               console.log('navigate /prof/home');
-              this.router.navigate(['prof', 'home']);
+              this.router.navigate(['/prof/home']);
+            } else {
+              console.log('navigate /login');
+              this.router.navigate(['login']);
+            }
+          } else if (this.UT === 'student') {
+            console.log('if student');
+            if (state) {
+              console.log('navigate /student/home');
+              this.router.navigate(['/student/home']);
+              console.log('yihaa');
             } else {
               console.log('navigate /login');
               this.router.navigate(['login']);

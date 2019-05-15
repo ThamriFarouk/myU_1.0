@@ -38,8 +38,6 @@ export class LoginPage implements OnInit {
     const login = log.value;
     const pass = <HTMLInputElement>document.getElementById('password');
     const pwd = pass.value;
-    console.log(login);
-    console.log(pwd);
     this.credService
       .getCredentials(login, pwd)
       .pipe(finalize(() => loading.dismiss()))

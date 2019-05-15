@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse
-} from '@angular/common/http';
-import { map, catchError, tap } from 'rxjs/operators';
-import { Observable, of, throwError } from 'rxjs';
-import { Teacher } from 'src/app/models/teacher';
+import { HttpClient } from '@angular/common/http';
 
 const TeacherDataUrl = 'assets/JSON_files/teacherdata.json';
 

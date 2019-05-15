@@ -146,6 +146,6 @@ export class MenuPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getProfile();
+    // this.getProfile();
   }
 }

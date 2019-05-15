@@ -15,10 +15,10 @@ export class HomePage implements OnInit {
   };
   constructor(public appComp: AppComponent, public router: Router) {}
 
-  // navigateToTest() {
-  //   this.appComp.switch();
-  //   this.router.navigate(['test']);
-  // }
+  navigateToTest() {
+    this.appComp.switch();
+    this.router.navigate(['test']);
+  }
 
   ngOnInit() {}
 }
