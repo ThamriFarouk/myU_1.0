@@ -19,17 +19,17 @@ myHeaders.set(
 export class GetProfileService {
   constructor(public http: HttpClient) {}
 
-  getStudentProfile(studentId) {
+  getStudentProfile(userID) {
     // let body = new HttpParams();
     // body = body.set('login', login);
     // body = body.set('password', pwd);
-    return this.http.get(URL_Student + studentId, { headers: myHeaders });
+    return this.http.get(URL_Student + userID, { headers: myHeaders });
   }
 
-  getProfProfile(profId) {
+  getProfProfile(userID) {
     // let body = new HttpParams();
     // body = body.set('login', login);
     // body = body.set('password', pwd);
-    return this.http.get(URL_prof + profId, { headers: myHeaders });
+    return this.http.get(URL_prof + userID, { headers: myHeaders });
   }
 }

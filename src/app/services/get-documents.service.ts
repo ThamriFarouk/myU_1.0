@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const localURL = 'assets/JSON_files/studentAttendance.Json';
 
 const server_IP_port = 'http://localhost:4000/';
-const URL = server_IP_port + 'studentAttendances/byStudent/';
+const URL = server_IP_port + 'studentDocuments/';
 
 const myHeaders = new HttpHeaders();
 myHeaders.set('Content-Type', 'application/json');
@@ -17,16 +17,10 @@ myHeaders.set(
 @Injectable({
   providedIn: 'root'
 })
-export class GetStudentAttendanceService {
+export class GetDocumentsService {
   constructor(public http: HttpClient) {}
 
-  getStudentAttendance() {
-    // return this.http.get(URL + id , { headers: entete}
-    // );
-    return this.http.get(localURL);
-  }
-
-  getStudentAttendances(id) {
-    return this.http.get(URL + id, { headers: myHeaders });
+  getDocuments() {
+    return this.http.get(URL, { headers: myHeaders });
   }
 }

@@ -157,7 +157,6 @@ export class EliminationsPage implements OnInit {
     this.storage.get('studentId').then(res => {
       const id = res;
       this.getstudentAttendances(id);
-      // this.getstudentAttendance();
     });
   }
 }

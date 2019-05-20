@@ -90,8 +90,6 @@ export class MenuPage implements OnInit {
     }
   ];
 
-  public appTeacherPages = [];
-
   selectedPath = '';
   public profile;
 

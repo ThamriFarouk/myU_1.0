@@ -7,6 +7,7 @@ import { TeacherByClasse } from 'src/app/models/studentModels/teacher/teacherByC
 import { Teacher } from 'src/app/models/commonModels/teacher';
 import { TeacherByCourse } from 'src/app/models/studentModels/teacher/teacherByCourse';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-teachers',
@@ -32,11 +33,13 @@ export class TeachersPage implements OnInit {
     cssProperty: 'margin-top',
     maxValue: 60
   };
+  X: any[] = [];
 
   constructor(
     public teacherService: TeacherListService,
     private loadingCtrl: LoadingController,
-    private nativeHttp: HTTP
+    private nativeHttp: HTTP,
+    private storage: Storage
   ) {}
 
   // API from local
@@ -47,7 +50,9 @@ export class TeachersPage implements OnInit {
       .getTeacherList()
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
-        this.Res.push(response);
+        this.X.push(response);
+        this.Res.push(this.X[0]);
+        console.log(this.Res);
         this.Res[0][0].professors.forEach(element => {
           this.tabTeachers.push(
             new Teacher(
@@ -91,7 +96,9 @@ export class TeachersPage implements OnInit {
       .getTeacherLists(id)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
-        this.Res.push(response);
+        this.X.push(response);
+        this.Res.push(this.X[0].studentListTeachers);
+        console.log(this.Res);
         this.Res[0][0].professors.forEach(element => {
           this.tabTeachers.push(
             new Teacher(
@@ -180,6 +187,9 @@ export class TeachersPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getTeacherList();
+    this.storage.get('studentId').then(res => {
+      const id = res;
+      this.getTeacherLists(id);
+    });
   }
 }

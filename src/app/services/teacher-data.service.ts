@@ -12,11 +12,4 @@ interface Teachers<T> {
 })
 export class TeacherDataService {
   constructor(public http: HttpClient) {}
-
-  public getTeacher() {
-    // : Observable<Teacher[]>
-    // console.log(this.http.get<Teacher[]>(TeacherDataUrl));
-
-    return this.http.get(TeacherDataUrl);
-  }
 }

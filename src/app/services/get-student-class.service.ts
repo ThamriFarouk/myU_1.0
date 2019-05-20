@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const localURL = 'assets/JSON_files/studentAttendance.Json';
 
 const server_IP_port = 'http://localhost:4000/';
-const URL = server_IP_port + 'studentAttendances/byStudent/';
+const URL = server_IP_port + 'classes/byStudent/';
 
 const myHeaders = new HttpHeaders();
 myHeaders.set('Content-Type', 'application/json');
@@ -14,19 +14,15 @@ myHeaders.set(
   'Origin, X-Requested-With, Content-Type, Accept, Authorization'
 );
 
+// let token = btoa(login + ':' + password);
+
 @Injectable({
   providedIn: 'root'
 })
-export class GetStudentAttendanceService {
+export class GetStudentClassService {
   constructor(public http: HttpClient) {}
 
-  getStudentAttendance() {
-    // return this.http.get(URL + id , { headers: entete}
-    // );
-    return this.http.get(localURL);
-  }
-
-  getStudentAttendances(id) {
+  getStudentClass(id) {
     return this.http.get(URL + id, { headers: myHeaders });
   }
 }

@@ -17,7 +17,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./internships.page.scss']
 })
 export class InternshipsPage implements OnInit {
-  url = '/etudiant/internship-details/';
+  url = '/student/internship-details/';
   public I: Internship = null;
   public Res: any[] = [];
   public tabInternships: Internship[] = [];
@@ -25,6 +25,7 @@ export class InternshipsPage implements OnInit {
   public tabMeetings: Meeting[] = [];
   public tabStudents: Student[] = [];
   public tabSupervisors: Supervisor[] = [];
+  public X: any[] = [];
 
   headerScrollConfig: ScrollHideConfig = {
     cssProperty: 'margin-top',
@@ -63,14 +64,16 @@ export class InternshipsPage implements OnInit {
   }
 
   // API from server
-  async getstudentInternships(id, internshipID) {
+  async getstudentInternships(id) {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     this.studentIS
       .getStudentInternships(id)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
-        this.Res.push(response);
+        this.X.push(response);
+        this.Res.push(this.X[0].studentInternships);
+        console.log(this.Res);
         for (let i = 0; i < this.Res[0].length; i++) {
           this.formatMeetings(i);
           this.formatProfessors(i);
@@ -166,7 +169,7 @@ export class InternshipsPage implements OnInit {
   reorginizeResponse(i) {
     this.tabInternships.push(
       new Internship(
-        this.Res[0][i].id,
+        this.Res[0][i]._id,
         this.Res[0][i].internshipType,
         this.Res[0][i].internshipNature,
         this.Res[0][i].startDate,
@@ -203,8 +206,9 @@ export class InternshipsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getstudentInternship();
-    console.log(this.tabInternships);
-    // this.getstudentInternships(4590,1);
+    this.storage.get('studentId').then(res => {
+      const id = res;
+      this.getstudentInternships(id);
+    });
   }
 }

@@ -7,6 +7,7 @@ import { Unit } from 'src/app/models/studentModels/course/Unit';
 import { Course } from 'src/app/models/studentModels/course/course';
 import { Evaluation } from 'src/app/models/studentModels/course/evaluation';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-notes',
@@ -14,13 +15,12 @@ import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
   styleUrls: ['./notes.page.scss']
 })
 export class NotesPage implements OnInit {
-  istoggled = false;
-
+  public istoggled = false;
+  public X: any[] = [];
   public Res: any[] = [];
   public tabUnits: Unit[] = [];
   public tabCourses: Course[] = [];
   public tabEvals: Evaluation[] = [];
-
   public collapseCard: boolean[] = [true, true, true];
   public collapseCardCourse: boolean[] = [true, true];
 
@@ -32,7 +32,8 @@ export class NotesPage implements OnInit {
   constructor(
     private studentEval: GetStudentEvaluationService,
     private router: Router,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private storage: Storage
   ) {}
 
   // API from local
@@ -68,7 +69,8 @@ export class NotesPage implements OnInit {
       .getStudentEvaluations(id)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
-        this.Res.push(response);
+        this.X.push(response);
+        this.Res.push(this.X[0].studentEvals);
         this.reorginizeResponse();
         this.putEvalsInCourse();
         this.putCoursesInUnit();
@@ -174,7 +176,9 @@ export class NotesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getstudentEvaluation();
-    // this.getstudentEvaluations(4590);
+    this.storage.get('studentId').then(res => {
+      const id = res;
+      this.getstudentEvaluations(id);
+    });
   }
 }
