@@ -96,7 +96,9 @@ export class InternshipsPage implements OnInit {
         new Teacher(
           this.Res[0][i].professors[j].id,
           null,
+          null,
           this.Res[0][i].professors[j].fullName,
+          null,
           null,
           null,
           null,
@@ -118,6 +120,9 @@ export class InternshipsPage implements OnInit {
         new Student(
           this.Res[0][i].students[j].fullName,
           this.Res[0][i].students[j].id,
+          null,
+          null,
+          null,
           null,
           null,
           null,

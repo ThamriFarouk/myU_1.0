@@ -5,6 +5,12 @@ import { LoadingController } from '@ionic/angular';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 import { GetProfileService } from 'src/app/services/get-profile.service';
 import { Storage } from '@ionic/storage';
+import { finalize } from 'rxjs/operators';
+import { GetStudentClassService } from 'src/app/services/get-student-class.service';
+import { Student } from 'src/app/models/commonModels/student';
+import { ClassField } from '@angular/compiler';
+import { Class } from 'src/app/models/commonModels/class';
+import { Teacher } from 'src/app/models/commonModels/teacher';
 
 @Component({
   selector: 'app-menu',
@@ -92,13 +98,21 @@ export class MenuPage implements OnInit {
 
   selectedPath = '';
   public profile;
+  X: any[] = [];
+  Y: any[] = [];
+  student: any;
+  class: any;
+  public createdStudent: Student;
+  public createdClass: Class;
+  public URL = 'http://localhost:4000/';
 
   constructor(
     private router: Router,
     private authService: AuthentificationService,
     private loadingCtrl: LoadingController,
     private profileService: GetProfileService,
-    private storage: Storage
+    private storage: Storage,
+    private classService: GetStudentClassService
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
@@ -117,33 +131,56 @@ export class MenuPage implements OnInit {
     loading.dismiss();
   }
 
-  getProfile() {
-    this.storage.get('userId').then(res => {
-      const UID = res;
-      console.log(UID);
-      this.storage.get('userType').then(userType => {
-        const UT = userType;
-        console.log(UT);
-        if (UT === 'student') {
-          this.profileService.getStudentProfile(UID).subscribe(result => {
-            this.profile = result;
-            this.profile = this.profile.student;
-            console.log(this.profile);
-            this.storage.set('studentId', this.profile._id);
+  async getStudent(id) {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.profileService
+      .getStudentProfile(id)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.X.push(response);
+        this.student = this.X[0].student;
+        this.classService
+          .getStudentClass(this.student.class)
+          .pipe(finalize(() => loading.dismiss()))
+          .subscribe(resp => {
+            this.Y.push(resp);
+            this.class = this.Y[0].classe;
+            this.createdClass = new Class(
+              this.class._id,
+              this.class.name,
+              this.class.departementName
+            );
+            this.createdStudent = new Student(
+              this.student.firstName + ' ' + this.student.lastName,
+              this.student._id,
+              this.student.class,
+              this.student.email,
+              this.student.birthPlace,
+              this.student.birthDate,
+              this.student.Nationality,
+              this.student.CIN,
+              this.student.PassportNumber,
+              this.student.SchoolName,
+              this.student.DepartmentName,
+              this.student.photo
+            );
+            console.log(this.createdStudent);
+            console.log(this.createdClass);
+            this.storage.set('studentId', this.student._id);
+            const path = this.URL + this.createdStudent.photo;
+            console.log(path);
+            document.getElementById('profilePic').setAttribute('src', path);
           });
-        }
-        if (UT === 'prof') {
-          this.profileService.getStudentProfile(UID).subscribe(result => {
-            this.profile = result;
-            this.profile = this.profile.student;
-            this.storage.set('profId', this.profile._id);
-          });
-        }
       });
-    });
   }
 
   ngOnInit() {
-    // this.getProfile();
+    this.storage.get('userType').then(userType => {
+      this.storage.get('userId').then(ID => {
+        const id = ID;
+        this.getStudent(id);
+      });
+    });
   }
 }

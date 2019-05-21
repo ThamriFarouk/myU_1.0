@@ -1,13 +1,16 @@
 import { Person } from 'src/app/models/commonModels/person';
 
 export class Teacher extends Person {
-  private classId: String;
-  private evaluation: String;
-  private course: String;
+  public classId: String;
+  public evaluation: String;
+  public course: String;
+  public photo: String;
+  public email: String;
 
   constructor(
     id,
     classId,
+    email,
     fullName,
     evaluation,
     course,
@@ -17,7 +20,8 @@ export class Teacher extends Person {
     CIN,
     PassportNumber,
     SchoolName,
-    DepartmentName
+    DepartmentName,
+    photo
   ) {
     super(
       fullName,
@@ -33,6 +37,8 @@ export class Teacher extends Person {
     this.classId = classId;
     this.evaluation = evaluation;
     this.course = course;
+    this.photo = photo;
+    this.email = email;
   }
 
   public hetId() {

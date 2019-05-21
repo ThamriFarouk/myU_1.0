@@ -95,6 +95,9 @@ export class InternshipDetailsPage implements OnInit {
           undefined,
           undefined,
           undefined,
+          undefined,
+          undefined,
+          undefined,
           undefined
         )
       );
@@ -125,7 +128,9 @@ export class InternshipDetailsPage implements OnInit {
         new Teacher(
           tab.professors[i].id,
           null,
+          null,
           tab.professors[i].fullName,
+          null,
           null,
           null,
           null,

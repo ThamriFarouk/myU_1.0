@@ -62,8 +62,10 @@ export class Internship {
         new Teacher(
           undefined,
           undefined,
+          undefined,
           // tslint:disable-next-line:quotemark
           "Pas d'enseignant assigné pour l'instant",
+          undefined,
           undefined,
           undefined,
           undefined,
@@ -81,6 +83,9 @@ export class Internship {
         new Student(
           // tslint:disable-next-line:quotemark
           "Pas d'étudiant assigné pour l'instant",
+          undefined,
+          undefined,
+          undefined,
           undefined,
           undefined,
           undefined,

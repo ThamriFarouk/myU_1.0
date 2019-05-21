@@ -1,13 +1,13 @@
 export class Person {
-  private fullName: String;
-  private id: number;
-  private birthPlace: String;
-  private birthDate: String;
-  private Nationality: String;
-  private CIN: String;
-  private PassportNumber: String;
-  private SchoolName: String;
-  private DepartmentName: String;
+  public fullName: String;
+  public id: number;
+  public birthPlace: String;
+  public birthDate: String;
+  public Nationality: String;
+  public CIN: String;
+  public PassportNumber: String;
+  public SchoolName: String;
+  public DepartmentName: String;
 
   constructor(
     fullName,

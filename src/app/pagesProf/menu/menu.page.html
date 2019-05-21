@@ -5,7 +5,7 @@
 
       <ion-header>
         <ion-toolbar color="primary">
-          <ion-title>Université ABC</ion-title>
+          <ion-title>{{createdProf.SchoolName}}</ion-title>
         </ion-toolbar>
       </ion-header>
 
@@ -15,7 +15,7 @@
             <!-- <div>
               <img src="https://wwwfr.uni.lu/var/storage/images/media/images/ubourgogne_logo/1088961-1-fre-FR/ubourgogne_logo.jpg">
             </div> -->
-
+            
           <ion-card color="medium" [routerDirection]="'root'" [routerLink]="['profile']">
               <ion-card-header>
                 <!-- <ion-img src="/assets/shapes.svg"></ion-img> -->
@@ -27,8 +27,7 @@
                           </ion-avatar>
                       </ion-col>
                       <ion-col align-self-end>
-                          <ion-card-title>Farouk Thamri</ion-card-title>
-                          <ion-card-subtitle>Licence en Sciences informatiques</ion-card-subtitle>
+                      <ion-card-title>{{createdProf.fullName}}</ion-card-title>                          
                       </ion-col>
                     </ion-row>
                   </ion-grid>

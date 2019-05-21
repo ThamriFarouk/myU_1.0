@@ -17,9 +17,7 @@ export class HomePage implements OnInit {
     cssProperty: 'margin-top',
     maxValue: 60
   };
-  X: any[] = [];
-  student: any;
-  prof: any;
+
   constructor(
     public appComp: AppComponent,
     public router: Router,
@@ -33,48 +31,5 @@ export class HomePage implements OnInit {
     this.router.navigate(['test']);
   }
 
-  async getStudent(id) {
-    const loading = await this.loadingCtrl.create();
-    await loading.present();
-    this.profileService
-      .getStudentProfile(id)
-      .pipe(finalize(() => loading.dismiss()))
-      .subscribe(response => {
-        this.X.push(response);
-        this.student = this.X[0].student;
-        console.log(this.student);
-        this.storage.set('studentId', this.student._id);
-      });
-  }
-
-  async getProf(id) {
-    const loading = await this.loadingCtrl.create();
-    await loading.present();
-    this.profileService
-      .getProfProfile(id)
-      .pipe(finalize(() => loading.dismiss()))
-      .subscribe(response => {
-        this.X.push(response);
-        this.prof = this.X[0].prof;
-        console.log(this.prof);
-        this.storage.set('profId', this.prof._id);
-      });
-  }
-
-  ngOnInit() {
-    this.storage.get('userType').then(userType => {
-      const UT = userType;
-      if (UT === 'prof') {
-        this.storage.get('userId').then(ID => {
-          const id = ID;
-          this.getProf(id);
-        });
-      } else if (UT === 'student') {
-        this.storage.get('userId').then(ID => {
-          const id = ID;
-          this.getStudent(id);
-        });
-      }
-    });
-  }
+  ngOnInit() {}
 }

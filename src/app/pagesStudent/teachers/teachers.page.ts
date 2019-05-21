@@ -58,9 +58,11 @@ export class TeachersPage implements OnInit {
             new Teacher(
               element.professorId,
               element.professorClassId,
+              null,
               element.professorFullName,
               element.evaluated,
               element.courseName,
+              null,
               null,
               null,
               null,
@@ -104,9 +106,11 @@ export class TeachersPage implements OnInit {
             new Teacher(
               element.professorId,
               element.professorClassId,
+              null,
               element.professorFullName,
               element.evaluated,
               element.courseName,
+              null,
               null,
               null,
               null,

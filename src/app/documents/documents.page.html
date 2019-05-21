@@ -11,4 +11,22 @@
 
 <ion-content #pageContent padding>
 
+  <ion-list *ngFor="let doc of tabDocs">
+    <img src.bind="URL + (doc.documentImage)"/>
+    <ion-card>
+      <ion-card-title>
+        {{doc.title}}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{doc.subtitle}}
+      </ion-card-subtitle>
+      <ion-card-subtitle>
+        publié le {{doc.date}} a {{doc.time}} par {{doc.publisher}}
+      </ion-card-subtitle>
+      <ion-card-content>
+        {{doc.content}}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
 </ion-content>
