@@ -11,20 +11,33 @@
 
 <ion-content #pageContent padding>
 
-  <ion-list *ngFor="let doc of tabDocs">
-    <img src.bind="URL + (doc.documentImage)"/>
+  <ion-list *ngFor="let doc of tabDocs; let i = index">
+    
     <ion-card>
-      <ion-card-title>
-        {{doc.title}}
-      </ion-card-title>
-      <ion-card-subtitle>
-        {{doc.subtitle}}
-      </ion-card-subtitle>
-      <ion-card-subtitle>
-        publié le {{doc.date}} a {{doc.time}} par {{doc.publisher}}
-      </ion-card-subtitle>
-      <ion-card-content>
+      <img src="{{URL}}{{doc.documentImage}}"/>
+      <ion-card-header color="medium" (click)="collapse(i)">
+        <ion-card-title>
+          {{doc.title}}
+          <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
+          <ion-icon style="float: right;" *ngIf="!collapseCard[i-1]" name="ios-arrow-down" slot="end"></ion-icon> 
+        </ion-card-title>
+        <ion-card-subtitle>
+          {{doc.subtitle}}
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          publié le {{doc.date}}
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          A: {{doc.time}}
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          Par: {{doc.publisher}}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content *ngIf="!collapseCard[i-1]">
         {{doc.content}}
+        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+        <a href="{{doc.link}}">See more</a>
       </ion-card-content>
     </ion-card>
   </ion-list>

@@ -15,6 +15,7 @@ export class DocumentsPage implements OnInit {
     cssProperty: 'margin-top',
     maxValue: 60
   };
+  public collapseCard: boolean[] = [true, true];
   public tabDocs: Document[] = [];
   public X: any[] = [];
   public tab: any[] = [];
@@ -38,28 +39,34 @@ export class DocumentsPage implements OnInit {
         this.tab.push(this.X[0].studentDocuments);
         console.log(this.tab);
         this.reorginizeResponse();
-        const path = this.URL + this.createdStudent.photo;
-        console.log(path);
-        document.getElementById('profilePic').setAttribute('src', path);
+        // const path = this.URL + this.createdStudent.photo;
+        // console.log(path);
+        // document.getElementById('profilePic').setAttribute('src', path);
       });
   }
 
   reorginizeResponse() {
     this.tab[0].forEach(element => {
-      this.tabDocs.push(
-        new Document(
-          element.title,
-          element.subtitle,
-          element.categorie,
-          element.content,
-          element.publisher,
-          element.date,
-          element.time,
-          element.documentImage
-        )
+      const doc = new Document(
+        element.title,
+        element.subtitle,
+        element.categorie,
+        element.content,
+        element.publisher,
+        element.date,
+        element.time,
+        element.documentImage,
+        element.link
       );
+      doc.checkEmptiness();
+      this.tabDocs.push(doc);
     });
     console.log(this.tabDocs);
+  }
+
+  // collapsable cards
+  collapse(i) {
+    this.collapseCard[i - 1] = !this.collapseCard[i - 1];
   }
 
   ngOnInit() {

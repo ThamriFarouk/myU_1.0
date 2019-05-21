@@ -1,0 +1,14 @@
+.image-container {
+    min-height: 230px;
+    min-width: 250px;
+    background-size: cover;
+}
+ion-slides {
+    margin-top: 30%;
+    background: #e6e6e6;
+ 
+    img {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}

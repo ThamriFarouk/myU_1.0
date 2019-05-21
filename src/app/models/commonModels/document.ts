@@ -7,6 +7,7 @@ export class Document {
   public date: String;
   public time: String;
   public documentImage: String;
+  public link: String;
   constructor(
     title,
     subtitle,
@@ -15,7 +16,8 @@ export class Document {
     publisher,
     date,
     time,
-    documentImage
+    documentImage,
+    link
   ) {
     this.title = title;
     this.subtitle = subtitle;
@@ -25,5 +27,15 @@ export class Document {
     this.date = date;
     this.time = time;
     this.documentImage = documentImage;
+    this.link = link;
+  }
+
+  checkEmptiness() {
+    if (this.date === ('' || null || undefined)) {
+      this.date = '--/--/----';
+    }
+    if (this.time === ('' || null || undefined)) {
+      this.time = '--:--';
+    }
   }
 }

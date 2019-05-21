@@ -11,4 +11,13 @@ export class Photo {
     this.date = date;
     this.time = time;
   }
+
+  checkEmptiness() {
+    if (this.date === ('' || null || undefined)) {
+      this.date = '--/--/----';
+    }
+    if (this.time === ('' || null || undefined)) {
+      this.time = '--:--';
+    }
+  }
 }

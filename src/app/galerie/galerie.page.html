@@ -9,6 +9,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content #pageContent padding>
+<ion-content #pageContent>
 
+ 
+   <div>
+    <!-- Responsive Layout with Ion Grid-->
+     <ion-grid>
+      <ion-row>
+        <ion-col style="padding: 0px" col-6 col-md-4 col-xl-3 *ngFor="let image of tabPhotos">
+          <figure>
+            <img class="image-container" src="{{URL}}{{image.path}}" >
+            <!-- <figcaption>{{image.caption}}</figcaption>
+            <p>{{image.description}}</p> -->
+          </figure>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+ 
+    <!-- More Pinterest floating gallery style -->
+ 
+   </div> 
+
+  <!-- <ion-slides [options]="sliderOpts"> 
+    <ion-slide *ngFor="let img of [1, 2, 3]">
+      <img src="assets/img/{{ img }}.jpg" tappable (click)="openPreview(img)">
+    </ion-slide>
+  </ion-slides> -->
+  
 </ion-content>
