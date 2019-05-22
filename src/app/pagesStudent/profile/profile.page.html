@@ -11,4 +11,60 @@
 
 <ion-content #pageContent padding>
 
+    <ion-card [routerDirection]="'root'" [routerLink]="['profile']">
+              <ion-card-header color="medium" text-center>
+                <div align ="center">
+                <ion-avatar style="height: 260px; width: 260px">
+                    <img id="profilePic" src="{{URL}}{{createdStudent.photo}}">
+                </ion-avatar>
+                <br>
+                <ion-card-title style="font-size: 20px">{{createdStudent.fullName}}</ion-card-title>
+                </div>
+              </ion-card-header>
+                      
+              <ion-card-content style="text-align: center">
+                <br>
+                <ion-card-title>Informations Personnelles</ion-card-title>
+
+                <ion-list>
+                  <ion-item>
+                    email: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdStudent.email}}</ion-note>
+                  </ion-item>
+                  <ion-item>
+                    tel: <ion-note style="font-size: 17px" slot="end" color="primary">20987466</ion-note>
+                  </ion-item>
+                  <ion-item>
+                    CIN: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdStudent.CIN}}</ion-note>
+                  </ion-item>  
+                  <ion-item>
+                    Nationalité: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdStudent.Nationality}}</ion-note>
+                  </ion-item>
+                  <ion-item>
+                    date de naissance: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdStudent.birthDate}}</ion-note>
+                  </ion-item>
+                  <ion-item>
+                    lieu de naissance: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdStudent.birthPlace}}</ion-note>
+                  </ion-item>
+                  <ion-item>
+                    PassportNumber: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdStudent.PassportNumber}}</ion-note>
+                  </ion-item>
+                </ion-list>
+
+                <br>
+                <ion-card-title>Education</ion-card-title>
+
+                <ion-list>
+                    <ion-item>
+                    Ecole: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdStudent.SchoolName}}</ion-note>                
+                  </ion-item>
+                  <ion-item>
+                    Departement: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdClass.getDepartmentName()}}</ion-note>                 
+                  </ion-item>
+                  <ion-item>
+                    Classe: <ion-note style="font-size: 17px" slot="end" color="primary">{{createdClass.getName()}}</ion-note>                  
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+          </ion-card>
+
 </ion-content>

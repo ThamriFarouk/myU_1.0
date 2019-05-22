@@ -5,38 +5,28 @@
 
       <ion-header>
         <ion-toolbar color="primary">
-          <ion-title>{{createdStudent.SchoolName}}</ion-title>
+          <ion-title>{{createdStudent.getSchoolName()}}</ion-title>
         </ion-toolbar>
       </ion-header>
 
       <ion-content> 
 
-
-            <!-- <div>
-              <img src="https://wwwfr.uni.lu/var/storage/images/media/images/ubourgogne_logo/1088961-1-fre-FR/ubourgogne_logo.jpg">
-            </div> -->
-
           <ion-card color="medium" [routerDirection]="'root'" [routerLink]="['profile']">
-              <ion-card-header>
-                <!-- <ion-img src="/assets/shapes.svg"></ion-img> -->
-                  <ion-grid>
-                    <ion-row>
-                      <ion-col size="auto">
-                          <ion-avatar style="max-height: 110px; max-width: 80px">
-                              <img id="profilePic">
-                          </ion-avatar>
-                      </ion-col>
-                      <ion-col align-self-end>
-                          <ion-card-title>{{createdStudent.fullName}}</ion-card-title>
-                          <ion-card-subtitle>Dep: {{createdClass.getDepartmentName()}}</ion-card-subtitle>
-                          <ion-card-subtitle>Classe: {{createdClass.getName()}}</ion-card-subtitle>
-                      </ion-col>
-                    </ion-row>
-                  </ion-grid>
+              <ion-card-header color="medium" text-center>
+                <div align ="center">
+                <ion-avatar style="height: 160px; width: 160px">
+                    <img id="profilePic" src="{{URL}}{{createdStudent.photo}}">
+                </ion-avatar>
+                </div>
               </ion-card-header>
+                      
+              <ion-card-content color="" style="text-align: center">
+                  <ion-card-title>{{createdStudent.fullName}}</ion-card-title>
+                  <ion-card-subtitle>Dep: {{createdClass.getDepartmentName()}}</ion-card-subtitle>
+                  <ion-card-subtitle>Classe: {{createdClass.getName()}}</ion-card-subtitle>
+              </ion-card-content>
           </ion-card>
          
-          
           <ion-menu-toggle auto-hide="false" >
              
           <ion-list>

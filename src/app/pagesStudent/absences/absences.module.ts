@@ -14,11 +14,11 @@ const routes: Routes = [
   {
     path: '',
     component: AbsencesPage
-  },
-  {
-    path: 'eliminations',
-    loadChildren: '../eliminations/eliminations.module#eliminationPageModule'
   }
+  // {
+  //   path: 'eliminations',
+  //   loadChildren: '../eliminations/eliminations.module#eliminationPageModule'
+  // }
 ];
 
 @NgModule({

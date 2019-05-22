@@ -60,7 +60,7 @@ export class GaleriePage implements OnInit {
       const photo = new Photo(
         element.path,
         element.caption,
-        element.description,
+        element.description, 
         element.date,
         element.time
       );
