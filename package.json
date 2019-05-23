@@ -43,6 +43,7 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
+    "ionic2-calendar": "^0.5.2",
     "jQuery": "^1.7.4",
     "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.5.5",
