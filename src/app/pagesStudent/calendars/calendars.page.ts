@@ -1,8 +1,11 @@
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { Component, ViewChild, OnInit, Inject, LOCALE_ID } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
+import { finalize } from 'rxjs/operators';
+import { GetCalendarService } from 'src/app/services/get-calendar.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-calendars',
@@ -33,10 +36,21 @@ export class CalendarsPage implements OnInit {
   };
 
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
+  X: any[] = [];
+  Y: any[] = [];
+  Z: any[] = [];
+  A: any[] = [];
+  ResX: any[] = [];
+  ResY: any[] = [];
+  ResZ: any[] = [];
+  ResA: any[] = [];
 
   constructor(
     private alertCtrl: AlertController,
-    @Inject(LOCALE_ID) private locale: string
+    @Inject(LOCALE_ID) private locale: string,
+    private loadingCtrl: LoadingController,
+    private CalendarService: GetCalendarService,
+    private storage: Storage
   ) {}
 
   resetEvent() {
@@ -78,6 +92,64 @@ export class CalendarsPage implements OnInit {
     this.eventSource.push(eventCopy);
     this.myCal.loadEvents();
     this.resetEvent();
+  }
+
+  async getClassCalendar(classId, schoolYear) {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.CalendarService.getClassCalendar(classId, schoolYear)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.X.push(response);
+        this.ResX.push(this.X[0].ClassCalendar);
+        console.log(this.ResX);
+      });
+  }
+
+  async getExamCalendar(classId, schoolYear) {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.CalendarService.getExamCalendar(classId, schoolYear)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.Y.push(response);
+        this.ResY.push(this.Y[0].ExamCalendar);
+        console.log(this.ResY);
+      });
+  }
+
+  async getProfExamCalendar(profId, schoolYear) {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.CalendarService.getProfExamCalendar(profId, schoolYear)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.A.push(response);
+        this.ResA.push(this.A[0].ProfExamCalendar);
+        console.log(this.ResA);
+      });
+  }
+
+  async getSchoolCalendar(school, schoolYear) {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.CalendarService.getSchoolCalendar(school, schoolYear)
+      .pipe(finalize(() => loading.dismiss()))
+      .subscribe(response => {
+        this.Z.push(response);
+        this.ResZ.push(this.Z[0].SchoolCalendar);
+        console.log(this.ResZ);
+      });
+  }
+
+  getSchoolYear(): String {
+    const D = new Date();
+    const M = D.getMonth();
+    if (M >= 1 && M <= 8) {
+      return D.getFullYear() - 1 + '-' + D.getFullYear();
+    } else {
+      return D.getFullYear() + '-' + (D.getFullYear() + 1);
+    }
   }
 
   // Change current month/week/day
@@ -131,5 +203,16 @@ export class CalendarsPage implements OnInit {
 
   ngOnInit() {
     this.resetEvent();
+    this.storage.get('classId').then(CID => {
+      const classId = CID;
+      console.log(classId);
+      this.storage.get('school').then(SY => {
+        const school = SY;
+        console.log(school);
+        this.getClassCalendar(classId, this.getSchoolYear());
+        this.getExamCalendar(classId, this.getSchoolYear());
+        this.getSchoolCalendar(school, this.getSchoolYear());
+      });
+    });
   }
 }
