@@ -17,7 +17,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './pagesProf/menu/menu.module#MenuPageModule'
-  }
+  },
+
 ];
 
 @NgModule({

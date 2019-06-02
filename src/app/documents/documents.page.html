@@ -15,7 +15,8 @@
     
     <ion-card>
       <img src="{{URL}}{{doc.documentImage}}"/>
-      <ion-card-header color="medium" (click)="collapse(i)">
+      <ion-card-header class="ion-activatable" color="medium" (click)="collapse(i)">
+        <ion-ripple-effect></ion-ripple-effect>
         <ion-card-title>
           {{doc.title}}
           <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
@@ -25,13 +26,10 @@
           {{doc.subtitle}}
         </ion-card-subtitle>
         <ion-card-subtitle>
-          publié le {{doc.date}}
+          Publié: <b>Le {{doc.date}} à {{doc.time}}</b>
         </ion-card-subtitle>
         <ion-card-subtitle>
-          A: {{doc.time}}
-        </ion-card-subtitle>
-        <ion-card-subtitle>
-          Par: {{doc.publisher}}
+          Par: <b>{{doc.publisher}}</b>
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content *ngIf="!collapseCard[i-1]">

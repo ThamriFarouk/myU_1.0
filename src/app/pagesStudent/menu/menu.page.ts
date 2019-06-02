@@ -170,6 +170,7 @@ export class MenuPage implements OnInit {
             this.storage.set('studentId', this.student._id);
             this.storage.set('classId', this.createdClass.getId());
             this.storage.set('school', this.createdStudent.getSchoolName());
+            this.storage.set('department', this.createdStudent.getDepartmentName());
             // const path = this.URL + this.createdStudent.photo;
             // console.log(path);
             // document.getElementById('profilePic').setAttribute('src', path);

@@ -6,6 +6,11 @@ import { ScrollHideConfig } from 'src/app/directives/scroll-hide.directive';
 import { finalize } from 'rxjs/operators';
 import { GetCalendarService } from 'src/app/services/get-calendar.service';
 import { Storage } from '@ionic/storage';
+import { ClassCalendar } from 'src/app/models/calendarModels/classCalendar';
+import { ExamCalendar } from 'src/app/models/calendarModels/examCalendar';
+import { SchoolCalendar } from 'src/app/models/calendarModels/schoolCalendar';
+import { ProfCalendar } from 'src/app/models/calendarModels/profCalendar';
+import { ProfExamCalendar } from 'src/app/models/calendarModels/profExamCalendar';
 
 @Component({
   selector: 'app-calendars',
@@ -44,6 +49,11 @@ export class CalendarsPage implements OnInit {
   ResY: any[] = [];
   ResZ: any[] = [];
   ResA: any[] = [];
+  classCalendar: ClassCalendar[] = [];
+  examCalendar: ExamCalendar[] = [];
+  schoolCalendar: SchoolCalendar[] = [];
+  profCalendar: ProfCalendar[] = [];
+  profExamCalendar: ProfExamCalendar[] = [];
 
   constructor(
     private alertCtrl: AlertController,
@@ -102,7 +112,7 @@ export class CalendarsPage implements OnInit {
       .subscribe(response => {
         this.X.push(response);
         this.ResX.push(this.X[0].ClassCalendar);
-        console.log(this.ResX);
+        this.reorginizeClassCalendar();
       });
   }
 
@@ -114,7 +124,7 @@ export class CalendarsPage implements OnInit {
       .subscribe(response => {
         this.Y.push(response);
         this.ResY.push(this.Y[0].ExamCalendar);
-        console.log(this.ResY);
+        this.reorginizeExamCalendar();
       });
   }
 
@@ -126,7 +136,7 @@ export class CalendarsPage implements OnInit {
       .subscribe(response => {
         this.A.push(response);
         this.ResA.push(this.A[0].ProfExamCalendar);
-        console.log(this.ResA);
+        this.reorginizeProfExamCalendar();
       });
   }
 
@@ -138,8 +148,83 @@ export class CalendarsPage implements OnInit {
       .subscribe(response => {
         this.Z.push(response);
         this.ResZ.push(this.Z[0].SchoolCalendar);
-        console.log(this.ResZ);
+        this.reorginizeSchoolCalendar();
       });
+  }
+
+  reorginizeClassCalendar() {
+    this.ResX[0].forEach(element => {
+      this.classCalendar.push(
+        new ClassCalendar(
+          element.id,
+          element.class,
+          element.name,
+          element.schoolYear,
+          element.seances
+        )
+      );
+    });
+    console.log(this.classCalendar);
+  }
+
+  reorginizeExamCalendar() {
+    this.ResX[0].forEach(element => {
+      this.examCalendar.push(
+        new ExamCalendar(
+          element.id,
+          element.class,
+          element.name,
+          element.schoolYear,
+          element.exams
+        )
+      );
+    });
+    console.log(this.examCalendar);
+  }
+
+  reorginizeSchoolCalendar() {
+    this.ResX[0].forEach(element => {
+      this.schoolCalendar.push(
+        new SchoolCalendar(
+          element.id,
+          element.school,
+          element.name,
+          element.schoolYear,
+          element.seances
+        )
+      );
+    });
+    console.log(this.schoolCalendar);
+  }
+
+  reorginizeProfExamCalendar() {
+    this.ResX[0].forEach(element => {
+      this.profExamCalendar.push(
+        new ProfExamCalendar(
+          element.id,
+          element.prof,
+          element.name,
+          element.schoolYear,
+          element.exams
+        )
+      );
+    });
+    console.log(this.profExamCalendar);
+  }
+
+  reorginizeProfCalendar() {
+    this.ResX[0].forEach(element => {
+      this.profCalendar.push(
+        new ProfCalendar(
+          element.id,
+          element.prof,
+          element.name,
+          element.schoolYear,
+          element.seances
+        )
+      );
+    });
+    console.log(this.profCalendar);
   }
 
   getSchoolYear(): String {

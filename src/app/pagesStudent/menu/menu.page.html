@@ -14,7 +14,8 @@
           <ion-card color="medium" [routerDirection]="'root'" [routerLink]="['profile']">
               <ion-card-header color="medium" text-center>
                 <div align ="center">
-                <ion-avatar style="height: 160px; width: 160px">
+                <ion-card-title style="font-size: 30px">Bienvenue !</ion-card-title> <br>
+                <ion-avatar style="height: 200px; width: 200px">
                     <img id="profilePic" src="{{URL}}{{createdStudent.photo}}">
                 </ion-avatar>
                 </div>
@@ -24,6 +25,8 @@
                   <ion-card-title>{{createdStudent.fullName}}</ion-card-title>
                   <ion-card-subtitle>Dep: {{createdClass.getDepartmentName()}}</ion-card-subtitle>
                   <ion-card-subtitle>Classe: {{createdClass.getName()}}</ion-card-subtitle>
+                  <ion-card-subtitle>Derniere connexion: </ion-card-subtitle>
+                  <ion-card-subtitle>il y a 3 heures </ion-card-subtitle>
               </ion-card-content>
           </ion-card>
          

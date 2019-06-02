@@ -24,6 +24,22 @@ export class GaleriePage implements OnInit {
   public X: any[] = [];
   public tab: any[] = [];
   public URL = 'http://localhost:4000/';
+  public collapseCard: boolean[] = [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ];
+
   // galleryType = 'regular';
   // sliderOpts = {
   //   zoom: false,
@@ -60,7 +76,7 @@ export class GaleriePage implements OnInit {
       const photo = new Photo(
         element.path,
         element.caption,
-        element.description, 
+        element.description,
         element.date,
         element.time
       );
@@ -81,6 +97,10 @@ export class GaleriePage implements OnInit {
   //       modal.present();
   //     });
   // }
+
+  collapse(i) {
+    this.collapseCard[i - 1] = !this.collapseCard[i - 1];
+  }
 
   ngOnInit() {
     this.getPhotos();

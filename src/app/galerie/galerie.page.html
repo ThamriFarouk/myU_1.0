@@ -16,12 +16,15 @@
     <!-- Responsive Layout with Ion Grid-->
      <ion-grid>
       <ion-row>
-        <ion-col style="padding: 0px" col-6 col-md-4 col-xl-3 *ngFor="let image of tabPhotos">
-          <figure>
-            <img class="image-container" src="{{URL}}{{image.path}}" >
-            <!-- <figcaption>{{image.caption}}</figcaption>
-            <p>{{image.description}}</p> -->
-          </figure>
+        <ion-col style="padding: 0px" col-6 col-md-4 col-xl-3 *ngFor="let image of tabPhotos; let i = index">
+            <figure>
+              <img class="image-container" src="{{URL}}{{image.path}}" (click)="collapse(i)">
+                <!-- <figcaption>{{image.caption}}</figcaption>
+               <p>{{image.description}}</p>  -->
+            </figure>
+            <!-- <ion-card-header style="padding-left: 32px" *ngIf="!collapseCard[i-1]">
+              <b>Description: </b> {{image.description}} ahzeajkhzeklajzhelakzjehazkejhalkzejhalzejhazkejhalkzejhalzeh
+            </ion-card-header> -->
         </ion-col>
       </ion-row>  
     </ion-grid>
@@ -33,7 +36,7 @@
 
   <!-- <ion-slides [options]="sliderOpts"> 
     <ion-slide *ngFor="let img of [1, 2, 3]">
-      <img src="assets/img/{{ img }}.jpg" tappable (click)="openPreview(img)">
+      <img src="assets/img/{{ img }}.jpg" tappable (click)="openPreview(img)"> 
     </ion-slide>
   </ion-slides> -->
   

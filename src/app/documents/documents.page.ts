@@ -15,7 +15,17 @@ export class DocumentsPage implements OnInit {
     cssProperty: 'margin-top',
     maxValue: 60
   };
-  public collapseCard: boolean[] = [true, true];
+  public collapseCard: boolean[] = [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ];
   public tabDocs: Document[] = [];
   public X: any[] = [];
   public tab: any[] = [];

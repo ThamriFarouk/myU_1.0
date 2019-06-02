@@ -3,7 +3,7 @@ export class ProfExamCalendar {
   public prof: String;
   public name: String;
   public schoolYear: String;
-  public exams: String;
+  public exams: Object;
 
   constructor(id, prof, name, schoolYear, exams) {
     this.id = id;

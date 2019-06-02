@@ -41,7 +41,8 @@
 
       <ion-card>
 
-        <ion-card-header color="medium" (click)="collapseUnit(i)">
+        <ion-card-header class="ion-activatable" color="medium" (click)="collapseUnit(i)">
+          <ion-ripple-effect></ion-ripple-effect>
           <ion-card-title >
               {{unit.getName()}}
           </ion-card-title>
@@ -54,7 +55,6 @@
         </ion-card-header>
 
         <ion-card-content *ngIf="!collapseCard[i-1]">
-                    
                     <ion-list lines="none" *ngFor="let course of tabUnits[i].Courses; let j = index">
                       <ion-item button (click)="collapseCourse(j)">
                             {{course.getName()}} <br>

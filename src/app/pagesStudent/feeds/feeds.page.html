@@ -9,6 +9,160 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content #pageContent padding>
+<ion-segment>
+  <!-- <ion-segment-button id="segAll" (click)="swichToAll()" checked>
+      <ion-label>All</ion-label>
+    </ion-segment-button> -->
+  <ion-segment-button id="segStudent" (click)="swichToStudent()" checked>
+      <ion-label>Student</ion-label>
+    </ion-segment-button>
+    <ion-segment-button id="segClass" (click)="swichToClass()">
+      <ion-label>Class</ion-label>
+    </ion-segment-button>
+    <ion-segment-button id="segSchool" (click)="swichToSchool()">
+      <ion-label>School</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-</ion-content>
+
+<!-- <ion-content #pageContent padding *ngIf="allClicked">
+      <ion-list *ngFor="let feed of allFeeds; let i = index">
+        <ion-card>
+          <div (click)="collapse(i)" class="ion-activatable">
+          <img src="{{URL}}{{feed.feedImage}}"/>
+          <ion-card-header color="medium" >
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-card-title>
+              {{feed.title}}
+              <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
+              <ion-icon style="float: right;" *ngIf="!collapseCard[i-1]" name="ios-arrow-down" slot="end"></ion-icon> 
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{feed.subtitle}}
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Publié: Le <b>{{feed.date}}</b> à <b>{{feed.time}}</b>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Par: <b>{{feed.publisher}}</b>
+            </ion-card-subtitle>
+          </ion-card-header>
+          </div>
+          <ion-card-content *ngIf="!collapseCard[i-1]">
+            <br>
+            {{feed.content}} <br>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+            <a href="{{feed.link}}">See more</a>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+  </ion-content> -->
+
+
+
+<ion-content #pageContent padding *ngIf="classClicked">
+      <ion-list *ngFor="let feed of classFeeds; let i = index">
+        <ion-card>
+          <div (click)="collapse(i)" class="ion-activatable">
+          <img src="{{URL}}{{feed.feedImage}}"/>
+          <ion-card-header color="medium" >
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-card-title>
+              {{feed.title}}
+              <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
+              <ion-icon style="float: right;" *ngIf="!collapseCard[i-1]" name="ios-arrow-down" slot="end"></ion-icon> 
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{feed.subtitle}}
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Publié: Le <b>{{feed.date}}</b> à <b>{{feed.time}}</b>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Par: <b>{{feed.publisher}}</b>
+            </ion-card-subtitle>
+          </ion-card-header>
+          </div>
+          <ion-card-content *ngIf="!collapseCard[i-1]">
+            <br>
+            {{feed.content}} <br>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+            <a href="{{feed.link}}">See more</a>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+  </ion-content>
+
+
+
+ 
+  <ion-content #pageContent padding *ngIf="schoolClicked">
+      <ion-list *ngFor="let feed of schoolFeeds; let i = index">
+          <ion-card>
+            <div class="ion-activatable" (click)="collapse(i)">          
+            <img src="{{URL}}{{feed.feedImage}}"/>
+            <ion-card-header class="ion-activatable" color="medium" >
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-title>
+                {{feed.title}}
+                <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
+                <ion-icon style="float: right;" *ngIf="!collapseCard[i-1]" name="ios-arrow-down" slot="end"></ion-icon> 
+              </ion-card-title>
+              <ion-card-subtitle>
+                {{feed.subtitle}}
+              </ion-card-subtitle>
+              <ion-card-subtitle>
+                Publié: Le <b>{{feed.date}}</b> à <b>{{feed.time}}</b>
+              </ion-card-subtitle>
+              <ion-card-subtitle>
+                Par: <b>{{feed.publisher}}</b>
+              </ion-card-subtitle>
+            </ion-card-header>
+            </div>
+            <ion-card-content *ngIf="!collapseCard[i-1]">
+              <br>
+              {{feed.content}} <br>
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+              <a href="{{feed.link}}">See more</a>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+  </ion-content>
+
+
+
+
+  <ion-content #pageContent padding *ngIf="studentClicked">
+      <ion-list *ngFor="let feed of studentFeeds; let i = index">
+        <ion-card>
+          <div (click)="collapse(i)" class="ion-activatable">
+          <img src="{{URL}}{{feed.feedImage}}"/>
+          <ion-card-header color="medium" >
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-card-title>
+              {{feed.title}}
+              <ion-icon style="float: right;" *ngIf="collapseCard[i-1]" name="ios-arrow-forward" slot="end"></ion-icon>
+              <ion-icon style="float: right;" *ngIf="!collapseCard[i-1]" name="ios-arrow-down" slot="end"></ion-icon> 
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{feed.subtitle}}
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Publié: Le <b>{{feed.date}}</b> à <b>{{feed.time}}</b> 
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Par: <b>{{feed.publisher}}</b>
+            </ion-card-subtitle>
+          </ion-card-header>
+          </div>
+          <ion-card-content *ngIf="!collapseCard[i-1]">
+            <br>
+            {{feed.content}} <br>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+            <a href="{{feed.link}}">See more</a>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+  </ion-content>
+
+

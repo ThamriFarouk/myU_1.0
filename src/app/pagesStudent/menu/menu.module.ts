@@ -72,7 +72,8 @@ const routes: Routes = [
       {
         path: 'galerie',
         loadChildren: 'src/app/galerie/galerie.module#GaleriePageModule'
-      }
+      },
+
     ]
   }
   // {

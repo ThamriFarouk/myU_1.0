@@ -16,6 +16,7 @@ import { Storage } from '@ionic/storage';
 })
 export class EliminationsPage implements OnInit {
   public Res: any[] = [];
+  public X: any[] = [];
   public Attendance: Attendance;
   public tabSeances: any[] = [];
   public nbAbsences: any;
@@ -64,7 +65,9 @@ export class EliminationsPage implements OnInit {
       .getStudentAttendances(id)
       .pipe(finalize(() => loading.dismiss()))
       .subscribe(response => {
-        this.Res.push(response);
+        this.X.push(response);
+        this.Res.push(this.X[0].studentAttendances[0]);
+        console.log(this.Res);
         this.reorginizeResponse();
         this.totalCourseAbsences(this.Attendance.getSeances());
         this.unicityFonction(this.tabEliminations);
